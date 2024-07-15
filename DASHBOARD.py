@@ -19,12 +19,16 @@ colc.write('')
 current_time = time.localtime()
 k = time.strftime("%V", current_time)
 cola,colb,colc = st.columns([1,2,1])
-t = int(k) + 13
-cola.write(f'**CURRENT ANNUAL WEEK IS: {k}, SURGE WEEK IS {t}**')
-conn = st.connection('gsheets', type=GSheetsConnection)
-
-dfb = conn.read(worksheet='DONE', usecols=list(range(11)), ttl=5)
-dfb = dfb.dropna(how='all')
+cola.write(f'**CURRENT WEEK IS: {k}**')
+cola.write(f'**SURGE WEEK IS {t}**')
+try:
+     conn = st.connection('gsheets', type=GSheetsConnection)     
+     dfb = conn.read(worksheet='DONE', usecols=list(range(11)), ttl=5)
+     dfb = dfb.dropna(how='all')
+except:
+     st.write(f"**Your network is poor, couldn't connect to the google sheet**")
+     st.write(f"**TRY AGAIN WITH BETTER INTERNET**")
+     st.stop()
 
 dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY']]
 file = r'C:\Users\Desire Lumisa\Desktop\PAPER\PLANNED.csv'
