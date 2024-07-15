@@ -32,7 +32,7 @@ except:
      st.stop()
 
 dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY']]
-file = r'C:\Users\Desire Lumisa\Desktop\PAPER\PLANNED.csv'
+file = r'PLANNED.csv'
 dfa = pd.read_csv(file)
 
 
