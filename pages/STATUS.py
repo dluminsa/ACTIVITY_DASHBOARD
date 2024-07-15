@@ -91,10 +91,10 @@ else:
              st.write("POOR INTERNET, COULDN'T CONNECT TO THE GOOGLE SHEETS")
              st.write('Get better internet and try again')
              st.stop()
-        sent = existing1[existing1['CLUSTER'] == cluster]
+        sent = existing1[existing1['CLUSTER'] == cluster].copy()
         sent['ID'] =sent['ID'].astype(int)
         existing2['PAID'] =existing2['PAID'].astype(int)
-        unpaid = sent[~sent['ID'].isin(existing2['PAID'])]
+        unpaid = sent[~sent['ID'].isin(existing2['PAID'])].copy()
         a = unpaid.shape[0]
         if int(a) == 0:
             st.write('**NO PAPER WORK PENDING**')
