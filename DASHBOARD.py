@@ -110,7 +110,7 @@ else:
 ar = filtered_dfb['AREA']. unique()
 if len(ar) == 0:
     cold.write(f'**No data for the thematic area(s) chosen**')
-elif len(ar)>1
+elif len(ar)>1:
      pass
 elif len(ar)==1:
      cold.write(f'**The data set is filtered by: {ar} thematic area(s)**')
