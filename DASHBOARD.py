@@ -10,7 +10,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 st.set_page_config(
-     page_title= 'ACTIVITY TRACKER'
+     page_title= 'ACTIVITY DASHBOARD'
 )
 cola,colb,colc = st.columns([1,2,1])
 cola.write('')
