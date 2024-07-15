@@ -19,7 +19,8 @@ colc.write('')
 current_time = time.localtime()
 k = time.strftime("%V", current_time)
 cola,colb,colc = st.columns([1,2,1])
-cola.write(f'**CURRENT WEEK IS: {k}**')
+t = int(k) + 13
+cola.write(f'**CURRENT ANNUAL WEEK IS: {k}, SURGE WEEK IS {t}**')
 conn = st.connection('gsheets', type=GSheetsConnection)
 
 dfb = conn.read(worksheet='DONE', usecols=list(range(11)), ttl=5)
