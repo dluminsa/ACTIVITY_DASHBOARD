@@ -18,6 +18,7 @@ colb.markdown("<h4><b>ACTIVITIES DASHBOARD</b></h4>", unsafe_allow_html=True)
 colc.write('')
 current_time = time.localtime()
 k = time.strftime("%V", current_time)
+t = int(k) + 13
 cola,colb,colc = st.columns([1,2,1])
 cola.write(f'**CURRENT WEEK IS: {k}**')
 cola.write(f'**SURGE WEEK IS {t}**')
