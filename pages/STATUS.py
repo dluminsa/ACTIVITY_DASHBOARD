@@ -17,7 +17,7 @@ district = ''
 cluster = ''
 ids = ''
 Intention = st.radio('**HOW MAY I HELP YOU?**', options=['MARK REVIEWED PAPER WORK', 'CHECK REVIEW STATUS'], index=None)
-file = r'C:\Users\Desire Lumisa\Desktop\PAPER\PLANNED.csv'
+file = r'PLANNED.csv'
 df = pd.read_csv(file)
 
 if Intention:
