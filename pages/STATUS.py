@@ -88,7 +88,7 @@ else:
              existing1= exist1.dropna(how='all')
              existing2= exist2.dropna(how='all')
         except:
-             st.write("POOR INTERNET, COULDN'T CONNECT TO THE GOOGLE SHEETS"
+             st.write("POOR INTERNET, COULDN'T CONNECT TO THE GOOGLE SHEETS")
              st.write('Get better internet and try again')
              st.stop()
         sent = existing1[existing1['CLUSTER'] == cluster]
