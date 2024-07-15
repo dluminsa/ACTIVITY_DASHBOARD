@@ -75,16 +75,22 @@ if Intention == 'MARK REVIEWED PAPER WORK':
 
             except:
                     st.write("Couldn't submit, poor network") 
+                    st.write("Submit again")
 else:
 
     clusters  = df['CLUSTER'].unique()
     cluster = st.radio("**Choose a cluster:**", clusters,horizontal=True, index=None)
     if cluster:
-        conn = st.connection('gsheets', type=GSheetsConnection)
-        exist1 = conn.read(worksheet= 'DONE', usecols=list(range(10)),ttl=5)
-        exist2 = conn.read(worksheet= 'PAID', usecols=list(range(2)),ttl=5)
-        existing1= exist1.dropna(how='all')
-        existing2= exist2.dropna(how='all')
+        try:
+             conn = st.connection('gsheets', type=GSheetsConnection)
+             exist1 = conn.read(worksheet= 'DONE', usecols=list(range(10)),ttl=5)
+             exist2 = conn.read(worksheet= 'PAID', usecols=list(range(2)),ttl=5)
+             existing1= exist1.dropna(how='all')
+             existing2= exist2.dropna(how='all')
+        except:
+             st.write("POOR INTERNET, COULDN'T CONNECT TO THE GOOGLE SHEETS"
+             st.write('Get better internet and try again')
+             st.stop()
         sent = existing1[existing1['CLUSTER'] == cluster]
         sent['ID'] =sent['ID'].astype(int)
         existing2['PAID'] =existing2['PAID'].astype(int)
