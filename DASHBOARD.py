@@ -21,7 +21,7 @@ k = time.strftime("%V", current_time)
 t = int(k) + 13
 cola,colb,colc = st.columns([1,2,1])
 cola.write(f'**CURRENT WEEK IS: {k}**')
-cola.write(f'**SURGE WEEK IS {t}**')
+cola.write(f'**SURGE WEEK IS: {t}**')
 try:
      conn = st.connection('gsheets', type=GSheetsConnection)     
      dfb = conn.read(worksheet='DONE', usecols=list(range(11)), ttl=5)
