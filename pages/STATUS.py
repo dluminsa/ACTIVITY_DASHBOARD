@@ -38,7 +38,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
         if int(total)==1:     
             col1, col2,col3 = st.columns(3)
             m = 'IN PUT PAPER WORK ID'
-            idS = col1.number_input(label=f'**{m}**', value=None, max_value=None, min_value=None,step=1, format="%d")
+            ids = col1.number_input(label=f'**{m}**', value=None, max_value=None, min_value=None,step=1, format="%d")
             id.append(ids)
             col2.write('')
             col2.write('')
