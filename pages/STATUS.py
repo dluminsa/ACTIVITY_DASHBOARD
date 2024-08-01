@@ -38,8 +38,8 @@ if Intention == 'MARK REVIEWED PAPER WORK':
         if int(total)==1:     
             col1, col2,col3 = st.columns(3)
             m = 'IN PUT PAPER WORK ID'
-            ids = col1.number_input(label=f'**{m}**', value=None, max_value=None, min_value=None,step=1, format="%d")
-            id.append(ids)
+            idea = col1.number_input(label=f'**{m}**', value=None, max_value=None, min_value=None,step=1, format="%d")
+            #id.append(ids)
             col2.write('')
             col2.write('')
             submit = col2.button('SUBMIT')
@@ -56,7 +56,10 @@ if Intention == 'MARK REVIEWED PAPER WORK':
             submit = col2.button('SUBMIT')
    
     if submit:
-            data1 = pd.DataFrame(id, columns=['PAID'])
+            if int(total)==1:
+                data1 = pd.DataFrame([{'PAID': idea}])
+            else:                  
+                data1 = pd.DataFrame(id, columns=['PAID'])
             data2 = data1.dropna(how='all')
             try:
                 st. write('SUBMITING ID')
