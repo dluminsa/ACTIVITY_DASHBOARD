@@ -83,14 +83,20 @@ elif not district and not activity:
     filtered_dfa = dfa[dfa['AREA'].isin(area)].copy()
     filtered_dfb = dfb[dfb['AREA'].isin(area)].copy()
 elif area and activity:
-    filtered_dfa = dfa3[dfa['AREA'].isin(area)& dfa3['ACTIVITY'].isin(activity)].copy()
-    filtered_dfb = dfb3[dfb['AREA'].isin(area)& dfb3['ACTIVITY'].isin(activity)].copy()
+     #
+    filtered_dfa = dfa3[dfa3['AREA'].isin(area)& dfa3['ACTIVITY'].isin(activity)].copy()
+     #
+    filtered_dfb = dfb3[dfb3['AREA'].isin(area)& dfb3['ACTIVITY'].isin(activity)].copy()
 elif district and activity:
-    filtered_dfa = dfa3[dfa['DISTRICT'].isin(district)& dfa3['ACTIVITY'].isin(activity)].copy()
-    filtered_dfb = dfb3[dfb['DISTRICT'].isin(district)& dfb3['ACTIVITY'].isin(activity)].copy()
+     #
+    filtered_dfa = dfa3[dfa3['DISTRICT'].isin(district)& dfa3['ACTIVITY'].isin(activity)].copy()
+     #
+    filtered_dfb = dfb3[dfb3['DISTRICT'].isin(district)& dfb3['ACTIVITY'].isin(activity)].copy()
 elif district and area:
-    filtered_dfa = dfa3[dfa['DISTRICT'].isin(district)& dfa3['AREA'].isin(area)].copy()
-    filtered_dfb = dfb3[dfb['DISTRICT'].isin(district)& dfb3['AREA'].isin(area)].copy()
+     #
+    filtered_dfa = dfa3[dfa3['DISTRICT'].isin(district)& dfa3['AREA'].isin(area)].copy()
+     #
+    filtered_dfb = dfb3[dfb3['DISTRICT'].isin(district)& dfb3['AREA'].isin(area)].copy()
 elif activity:
     filtered_dfa = dfa3[dfa3['ACTIVITY'].isin(activity)].copy()
     filtered_dfb = dfb3[dfb3['ACTIVITY'].isin(activity)].copy()
