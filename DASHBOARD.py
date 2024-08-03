@@ -153,7 +153,7 @@ with col4:
 #PIE CHART
 #st.divider()
 col1, col2,col3 = st.columns([1,4,1])
-labels = ['DONE', 'NOTDONE']
+labels = ['DONE', 'NOT DONE']
 # Values
 values = [conducted, notdone]
 colors = ['blue', 'red']
@@ -163,7 +163,7 @@ fig = go.Figure(data=[go.Pie(labels=labels, values=values, textinfo='label+value
 
 # Updating the layout for better readability
 fig.update_traces(textposition='inside', textfont_size=20)
-fig.update_layout(title_text='DONE vs NOTDONE', title_x=0.3)
+fig.update_layout(title_text='DONE vs NOT DONE', title_x=0.3)
 
 col1, col2,col3 = st.columns([1,4,1])
 with col2:
