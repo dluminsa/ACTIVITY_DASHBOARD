@@ -133,7 +133,10 @@ else:
 plan = filtered_dfa['PLANNED'].sum()
 conducted = filtered_dfb['DONE'].sum()
 notdone = plan - conducted
-perc = round((conducted/plan)*100)
+if plan ==0:
+     perc =0
+else:
+    perc = round((conducted/plan)*100)
 
 if conducted>plan:
     st.warning(f"SOMETHING IS WRONG, IT SEEMS ACTIVITIES DONE ARE MORE THAN THOSE THAT WERE PLANNED FOR!!")
