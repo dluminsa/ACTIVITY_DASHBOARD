@@ -187,7 +187,7 @@ fig2.update_layout(xaxis_title='WEEK', yaxis_title='TOTAL DONE',
 
 st.plotly_chart(fig2, use_container_width=True)
 
-filtered_dfc= filtered_dfb[['CLUSTER','DISTRICT','FACILITY' ,'AREA','ACTIVITY', 'DONE', 'WEEK']]
+filtered_dfc= filtered_dfb[['CLUSTER','DISTRICT','FACILITY' ,'AREA','ACTIVITY', 'DONE', 'WEEK', 'UNIQUE ID']]
 with st.expander(f'**CLICK HERE TO SEE FULL DATA SET**'):
     st.dataframe(filtered_dfc.reset_index(drop=True))
     csv_data = filtered_dfc.to_csv(index=False)
