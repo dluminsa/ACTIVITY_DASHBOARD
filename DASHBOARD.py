@@ -105,7 +105,7 @@ else:
     filtered_dfb = dfb3[dfb3['DISTRICT'].isin(district) & dfb3['AREA'].isin(area)&dfb3['ACTIVITY'].isin(activity)].copy()
 #################################################################################################
 cols,cold = st.columns(2)
-dist = filtered_dfb['DISTRICT']. unique()
+dist = '.'.join(filtered_dfb['DISTRICT']. unique())
 if not district:
     pass
 elif len(dist) == 0:
@@ -113,7 +113,7 @@ elif len(dist) == 0:
 else:
     cols.write(f'**You are viewing data for: {dist}**')
 
-ar = filtered_dfb['AREA']. unique()
+ar = '.'.join(filtered_dfb['AREA']. unique())
 if len(ar) == 0:
     cold.write(f'**No data for the thematic area(s) chosen**')
 elif len(ar)>1:
@@ -121,7 +121,7 @@ elif len(ar)>1:
 elif len(ar)==1:
      cold.write(f'**The data set is filtered by: {ar} thematic area(s)**')
 
-act = filtered_dfb['ACTIVITY']. unique()
+act = '.'.join(filtered_dfb['ACTIVITY']. unique())
 
 if not activity:
     st.write(f'**No specific activity has been chosen**')
