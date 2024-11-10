@@ -51,7 +51,6 @@ dfa['AREA'] = dfa['AREA'].astype(str)
 dfa['ACTIVITY'] = dfa['ACTIVITY'].astype(str)
 dfa['PLANNED'] = dfa['PLANNED'].astype(int)
 
-
 st.sidebar.subheader('Filter from here ')
 district = st.sidebar.multiselect('Pick a district', dfa['DISTRICT'].unique())
 
@@ -192,6 +191,41 @@ fig2.update_layout(xaxis_title='WEEK', yaxis_title='TOTAL DONE',
                      yaxis=dict(showline=True, linewidth=1, linecolor='black'))  # Show y-axis line)
 
 st.plotly_chart(fig2, use_container_width=True)
+dists = filtered_dfb['DISTRICT'].unique()
+facys = filtered_dfb['FACILITY'].unique()
+areas = filtered_dfb['AREA'].unique()
+
+chec = len(dists)
+cola, colb, colc = st.columns([2,1,1,1])
+cola.write('**DISTRICT**)
+colb.write('**PLANNED**)
+colc.write('**DONE**)
+cold.write('**BALANCE**)
+for ary in areas:
+     allya = filtered_dfb[filtered_dfb['AREA']==area]           
+     if chec>1:
+          for district in dists:
+               ally = allya[allya['DISTRICT']==district]
+               plan = ally['PLANNED'].sum()
+               conducted = ally['DONE'].sum()
+               notdone = plan - conducted
+               cola.write(f'**{district}**)
+               colb.write(f'**{plan}**)
+               colc.write(f'**{conducted}**)
+               cold.write(f'**{notdone}**)
+     elif chec==1:
+          for fact in facys:
+               ally = allya[allya['DISTRICT']==fact]
+               plan = ally['PLANNED'].sum()
+               conducted = ally['DONE'].sum()
+               notdone = plan - conducted
+               cola.write(f'**{district}**)
+               colb.write(f'**{plan}**)
+               colc.write(f'**{conducted}**)
+               cold.write(f'**{notdone}**)
+     else:
+         pass                 
+                          
 
 filtered_dfc= filtered_dfb[['CLUSTER','DISTRICT','FACILITY' ,'AREA','ACTIVITY', 'DONE', 'WEEK']]
 with st.expander(f'**CLICK HERE TO SEE FULL DATA SET**'):
