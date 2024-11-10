@@ -202,10 +202,7 @@ for ary in areas:
      allyf = filtered_dfa[filtered_dfa['AREA']==ary]  
      if chec>1:
           st.divider()
-          html_table = """
-               <h4><b><u style="color: green;">DISTRICT PERFORMANCE IN {ary}</u></b></h4>
-               """
-          st.markdown(html_table, unsafe_allow_html=True)
+          st.markdown(f'<h4><b><u style="color: green;">DISTRICT PERFORMANCE IN {ary}</u></b></h4>', unsafe_allow_html=True)
          # st.write(f'**DISTRICT PERFORMANCE IN {ary}**')
           cola, colb, colc = st.columns([2,1,1])
           cola.write('**DISTRICT**')
@@ -223,18 +220,15 @@ for ary in areas:
                colc.write(f'**{conducted}**')
                cold.write(f'**{notdone}**')
      elif chec==1:
-          st.divider()
-          html_table = """
-               <h4><b><u style="color: green;">FACILITY PERFORMANCE IN {ary} IN {district}</u></b></h4>
-               """
-          st.markdown(html_table, unsafe_allow_html=True)
+          st.divider()               
+          st.markdown(f'<h5><b><u style="color: green;">FACILITY PERFORMANCE IN {ary} IN {district}</u></b></h5>', unsafe_allow_html=True)
           #st.write(f'**FACILITY PERFORMANCE IN {ary} IN {district}**')
           st.divider()
           cola, colb, colc = st.columns([2,1,1])
           cola.write('**FACILITY**')
           colc.write('**DONE**')
           for fact in facys:
-               ally = allya[allya['DISTRICT']==fact]
+               ally = allya[allya['FACILITY']==fact]
                conducted = ally['DONE'].sum()
                cola.write(f'**{district}**')
                colc.write(f'**{conducted}**')
