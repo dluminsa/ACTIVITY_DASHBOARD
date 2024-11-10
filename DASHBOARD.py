@@ -229,12 +229,11 @@ for ary in areas:
           cola.write('**FACILITY**')
           colc.write('**DONE**')
           for fact in facys:
-               st.write(fact)
                dists = allya['DISTRICT'].unique()
                allyg = allya[allya['DISTRICT'].isin(dists)]
                ally = allyg[allyg['FACILITY']==fact]
                conducted = ally['DONE'].sum()
-               cola.write(f'**{district}**')
+               cola.write(f'**{fact}**')
                colc.write(f'**{conducted}**')
      else:
          pass                 
