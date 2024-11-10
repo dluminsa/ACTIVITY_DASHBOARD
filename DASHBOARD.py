@@ -142,17 +142,21 @@ else:
 
 if conducted>plan:
     st.warning(f"SOMETHING IS WRONG, IT SEEMS ACTIVITIES DONE ARE MORE THAN THOSE THAT WERE PLANNED FOR!!")
+expe = round((int(t)/12)*100)
 
-col1,col2,col3,col4 = st.columns(4, gap='large')
+col1,col2,col3,col4,col5 = st.columns(5, gap='large')
 
 with col1:
     st.metric(label='**PLANNED**', value=f'{plan:,.0f}')
 with col2:
     st.metric(label='**CONDUCTED**', value=f'{conducted:,.0f}')
 with col3:
-    st.metric(label='**PERCENTAGE**', value=f'{perc:,.0f}')
+    st.metric(label='**%-AGE**', value=f'{int(perc} %')
 with col4:
+    st.metric(label='**EXPECTED**', value=f'{int(expe} %')
+with col5:
     st.metric(label='**NOT DONE**', value=f'{notdone:,.0f}')
+     
 
 #######################################################################################################
 #PIE CHART
