@@ -151,7 +151,7 @@ with col1:
 with col2:
     st.metric(label='**CONDUCTED**', value=f'{conducted:,.0f}')
 with col3:
-    st.metric(label='**%-AGE**', value=f'{int(perc} %')
+    st.metric(label='**%-AGE**', value=f'{int(perc)} %')
 with col4:
     st.metric(label='**EXPECTED**', value=f'{int(expe)} %')
 with col5:
