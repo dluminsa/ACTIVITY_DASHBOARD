@@ -201,7 +201,7 @@ for ary in areas:
      allya = filtered_dfb[filtered_dfb['AREA']==ary] 
      allyf = filtered_dfa[filtered_dfa['AREA']==ary]  
      if chec>1:
-          cola, colb, colc = st.columns([2,1,1,1])
+          cola, colb, colc = st.columns([2,1,1])
           cola.write('**DISTRICT**')
           colb.write('**PLANNED**')
           colc.write('**DONE**')
@@ -217,7 +217,7 @@ for ary in areas:
                colc.write(f'**{conducted}**')
                cold.write(f'**{notdone}**')
      elif chec==1:
-          cola, colb, colc = st.columns([2,1,1,1])
+          cola, colb, colc = st.columns([2,1,1])
           cola.write('**FACILITY**')
           colc.write('**DONE**')
           for fact in facys:
