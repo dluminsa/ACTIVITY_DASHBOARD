@@ -153,7 +153,7 @@ with col2:
 with col3:
     st.metric(label='**%-AGE**', value=f'{int(perc} %')
 with col4:
-    st.metric(label='**EXPECTED**', value=f'{int(expe} %')
+    st.metric(label='**EXPECTED**', value=f'{int(expe)} %')
 with col5:
     st.metric(label='**NOT DONE**', value=f'{notdone:,.0f}')
      
