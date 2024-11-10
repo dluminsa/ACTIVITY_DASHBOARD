@@ -193,6 +193,7 @@ fig2.update_layout(xaxis_title='WEEK', yaxis_title='TOTAL DONE',
 st.plotly_chart(fig2, use_container_width=True)
 dists = filtered_dfb['DISTRICT'].unique()
 facys = filtered_dfb['FACILITY'].unique()
+st.write(facys)
 areas = filtered_dfb['AREA'].unique()
 
 chec = len(dists)
