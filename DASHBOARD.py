@@ -202,6 +202,8 @@ for ary in areas:
      allyf = filtered_dfa[filtered_dfa['AREA']==ary]  
      if chec>1:
           cola, colb, colc = st.columns([2,1,1])
+          colb.write(f'**DISTRICT PERFORMANCE IN {ary}**')
+          st.divider
           cola.write('**DISTRICT**')
           colb.write('**PLANNED**')
           colc.write('**DONE**')
