@@ -196,10 +196,10 @@ facys = filtered_dfb['FACILITY'].unique()
 areas = filtered_dfb['AREA'].unique()
 
 chec = len(dists)
-st.write(filtered_dfb)
+
 for ary in areas:
-     allya = filtered_dfb[filtered_dfb['AREA']==area] 
-     allyf = filtered_dfa[filtered_dfa['AREA']==area]  
+     allya = filtered_dfb[filtered_dfb['AREA']==ary] 
+     allyf = filtered_dfa[filtered_dfa['AREA']==ary]  
      if chec>1:
           cola, colb, colc = st.columns([2,1,1,1])
           cola.write('**DISTRICT**')
