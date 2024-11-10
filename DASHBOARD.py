@@ -222,7 +222,7 @@ for ary in areas:
      elif chec==1:
           st.divider() 
           disy = ','.join(district)
-          st.markdown(f'<h5><b><u style="color: green;">FACILITY PERFORMANCE IN {ary} IN {disy}</u></b></h5>', unsafe_allow_html=True)
+          st.markdown(f'<h5><b><u style="color: green;">FACILITY PERFORMANCE IN {ary} ACTIVITIES IN {disy}</u></b></h5>', unsafe_allow_html=True)
           #st.write(f'**FACILITY PERFORMANCE IN {ary} IN {district}**')
           st.divider()
           cola, colb, colc = st.columns([2,1,1])
