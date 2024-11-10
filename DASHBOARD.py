@@ -193,7 +193,6 @@ fig2.update_layout(xaxis_title='WEEK', yaxis_title='TOTAL DONE',
 st.plotly_chart(fig2, use_container_width=True)
 dists = filtered_dfb['DISTRICT'].unique()
 facys = filtered_dfb['FACILITY'].unique()
-st.write(facys)
 areas = filtered_dfb['AREA'].unique()
 
 chec = len(dists)
@@ -221,8 +220,9 @@ for ary in areas:
                colc.write(f'**{conducted}**')
                cold.write(f'**{notdone}**')
      elif chec==1:
-          st.divider()               
-          st.markdown(f'<h5><b><u style="color: green;">FACILITY PERFORMANCE IN {ary} IN {district}</u></b></h5>', unsafe_allow_html=True)
+          st.divider() 
+          disy = ','.join(district)
+          st.markdown(f'<h5><b><u style="color: green;">FACILITY PERFORMANCE IN {ary} IN {disy}</u></b></h5>', unsafe_allow_html=True)
           #st.write(f'**FACILITY PERFORMANCE IN {ary} IN {district}**')
           st.divider()
           cola, colb, colc = st.columns([2,1,1])
