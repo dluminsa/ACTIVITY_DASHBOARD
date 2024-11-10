@@ -200,9 +200,13 @@ chec = len(dists)
 for ary in areas:
      allya = filtered_dfb[filtered_dfb['AREA']==ary] 
      allyf = filtered_dfa[filtered_dfa['AREA']==ary]  
-     if chec>1:  
-          st.write(f'**DISTRICT PERFORMANCE IN {ary}**')
+     if chec>1:
           st.divider()
+          html_table = """
+               <h4><b><u style="color: green;">DISTRICT PERFORMANCE IN {ary}</u></b></h4>
+               """
+          st.markdown(html_table, unsafe_allow_html=True)
+         # st.write(f'**DISTRICT PERFORMANCE IN {ary}**')
           cola, colb, colc = st.columns([2,1,1])
           cola.write('**DISTRICT**')
           colb.write('**PLANNED**')
@@ -219,7 +223,12 @@ for ary in areas:
                colc.write(f'**{conducted}**')
                cold.write(f'**{notdone}**')
      elif chec==1:
-          st.write(f'**FACILITY PERFORMANCE IN {ary} IN {district}**')
+          st.divider()
+          html_table = """
+               <h4><b><u style="color: green;">FACILITY PERFORMANCE IN {ary} IN {district}</u></b></h4>
+               """
+          st.markdown(html_table, unsafe_allow_html=True)
+          #st.write(f'**FACILITY PERFORMANCE IN {ary} IN {district}**')
           st.divider()
           cola, colb, colc = st.columns([2,1,1])
           cola.write('**FACILITY**')
