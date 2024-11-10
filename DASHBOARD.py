@@ -196,17 +196,20 @@ facys = filtered_dfb['FACILITY'].unique()
 areas = filtered_dfb['AREA'].unique()
 
 chec = len(dists)
-cola, colb, colc = st.columns([2,1,1,1])
-cola.write('**DISTRICT**)
-colb.write('**PLANNED**)
-colc.write('**DONE**)
-cold.write('**BALANCE**)
+
 for ary in areas:
-     allya = filtered_dfb[filtered_dfb['AREA']==area]           
+     allya = filtered_dfb[filtered_dfb['AREA']==area] 
+     allyf = filtered_dfa[filtered_dfa['AREA']==area]  
      if chec>1:
+          cola, colb, colc = st.columns([2,1,1,1])
+          cola.write('**DISTRICT**')
+          colb.write('**PLANNED**')
+          colc.write('**DONE**')
+          cold.write('**BALANCE**')
           for district in dists:
                ally = allya[allya['DISTRICT']==district]
-               plan = ally['PLANNED'].sum()
+               allyp = allyf[allyf['DISTRICT']==district]
+               plan = allyp['PLANNED'].sum()
                conducted = ally['DONE'].sum()
                notdone = plan - conducted
                cola.write(f'**{district}**)
@@ -214,15 +217,14 @@ for ary in areas:
                colc.write(f'**{conducted}**)
                cold.write(f'**{notdone}**)
      elif chec==1:
+          cola, colb, colc = st.columns([2,1,1,1])
+          cola.write('**FACILITY**')
+          colc.write('**DONE**')
           for fact in facys:
                ally = allya[allya['DISTRICT']==fact]
-               plan = ally['PLANNED'].sum()
                conducted = ally['DONE'].sum()
-               notdone = plan - conducted
                cola.write(f'**{district}**)
-               colb.write(f'**{plan}**)
                colc.write(f'**{conducted}**)
-               cold.write(f'**{notdone}**)
      else:
          pass                 
                           
