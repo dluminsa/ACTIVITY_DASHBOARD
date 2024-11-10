@@ -205,7 +205,7 @@ for ary in areas:
           st.divider()
           st.markdown(f'<h4><b><u style="color: green;">DISTRICT PERFORMANCE IN {ary}</u></b></h4>', unsafe_allow_html=True)
          # st.write(f'**DISTRICT PERFORMANCE IN {ary}**')
-          cola, colb, colc = st.columns([2,1,1])
+          cola, colb, colc, cold = st.columns([2,1,1,1])
           cola.write('**DISTRICT**')
           colb.write('**PLANNED**')
           colc.write('**DONE**')
@@ -230,7 +230,9 @@ for ary in areas:
           colc.write('**DONE**')
           for fact in facys:
                st.write(fact)
-               ally = allya[allya['FACILITY']==fact]
+               dists = allya['DISTRICT'].unique()
+               allyg = allya[allya['DISTRICT'].isin(dists)]
+               ally = allyg[allyg['FACILITY']==fact]
                conducted = ally['DONE'].sum()
                cola.write(f'**{district}**')
                colc.write(f'**{conducted}**')
