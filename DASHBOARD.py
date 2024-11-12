@@ -34,7 +34,7 @@ except:
      st.stop()
 dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID']].copy()
 dfb[['DISTRICT','FACILITY', 'ACTIVITY']]  = dfb[['DISTRICT','FACILITY', 'ACTIVITY']].astype(str)
-st.write(dfb.columns)
+st.write(dfb)
 dfb['DONE'] = pd.to_numeric(dfb['DONE'], errors='coerce')
 dfb['ID'] = pd.to_numeric(dfb['ID'], errors='coerce')
 # dfb[['DONE','ID']] = dfb[['DONE','ID']].apply(pd.to_numeric, errors='coerce')
