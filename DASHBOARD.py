@@ -33,7 +33,7 @@ except:
      st.write(f"**TRY AGAIN WITH BETTER INTERNET**")
      st.stop()
 
-dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY']].copy()
+dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID']].copy()
 dfb[['DISTRICT','FACILITY', 'ACTIVITY']]  = dfb[['DISTRICT','FACILITY', 'ACTIVITY']].astype(str)
 dfb['ID'] = dfb['ID'].astype(int)
 dfb = dfb.drop_duplicates(subset = ['ID','DISTRICT', 'FACILITY', 'ACTIVITY'], keep = 'first')
