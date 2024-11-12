@@ -32,7 +32,7 @@ except:
      st.write(f"**Your network is poor, couldn't connect to the google sheet**")
      st.write(f"**TRY AGAIN WITH BETTER INTERNET**")
      st.stop()
-dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID','DONE']].copy()
+dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID']].copy()
 dfb[['DISTRICT','FACILITY', 'ACTIVITY']]  = dfb[['DISTRICT','FACILITY', 'ACTIVITY']].astype(str)
 st.write(dfb.columns)
 dfb['DONE'] = pd.to_numeric(dfb['DONE'], errors='coerce')
