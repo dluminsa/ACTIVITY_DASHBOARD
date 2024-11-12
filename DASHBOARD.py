@@ -32,9 +32,9 @@ except:
      st.write(f"**Your network is poor, couldn't connect to the google sheet**")
      st.write(f"**TRY AGAIN WITH BETTER INTERNET**")
      st.stop()
-st.write(dfb.columns)
-dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID']].copy()
+dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID','DONE']].copy()
 dfb[['DISTRICT','FACILITY', 'ACTIVITY']]  = dfb[['DISTRICT','FACILITY', 'ACTIVITY']].astype(str)
+st.write(dfb['ID'])
 dfb['ID'] = dfb['ID'].astype(int)
 dfb = dfb.drop_duplicates(subset = ['ID','DISTRICT', 'FACILITY', 'ACTIVITY'], keep = 'first')
 file = r'PLANNED.csv'
