@@ -35,7 +35,7 @@ except:
 dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID','DONE']].copy()
 dfb[['DISTRICT','FACILITY', 'ACTIVITY']]  = dfb[['DISTRICT','FACILITY', 'ACTIVITY']].astype(str)
 
-dfb[['DONE','ID']] = pd.to_numeric(dfb[['DONE','ID']], errors='coerce')
+dfb[['DONE','ID']] = pd.to_numeric([['DONE','ID']], errors='coerce')
 dfb = dfb.drop_duplicates(subset = ['ID','DISTRICT', 'FACILITY', 'ACTIVITY'], keep = 'first')
 file = r'PLANNED.csv'
 dfa = pd.read_csv(file)
