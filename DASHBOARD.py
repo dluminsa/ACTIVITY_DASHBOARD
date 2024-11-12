@@ -33,7 +33,10 @@ except:
      st.write(f"**TRY AGAIN WITH BETTER INTERNET**")
      st.stop()
 
-dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY']]
+dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY']].copy()
+dfb[['DISTRICT','FACILITY', 'ACTIVITY']]  = dfb[['DISTRICT','FACILITY', 'ACTIVITY']].astype(str)
+df['ID'] = df['ID'].astype(int)
+dfb = dfb.drop_duplicates(subset = ['ID', 'FACILITY', 'ACTIVITY'], keep = 'first')
 file = r'PLANNED.csv'
 dfa = pd.read_csv(file)
 
