@@ -146,8 +146,8 @@ if Intention == 'MARK REVIEWED PAPER WORK':
               if not submit:
                    st.stop()
               else:
-                   pass
-              if total:
+                   st.session_state.sear = True
+              if st.session_state.sear:
                       #st.write(st.session_state.sear)
                       secrets = st.secrets["connections"]["gsheets"]
                       credentials_info = {
