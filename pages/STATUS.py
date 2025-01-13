@@ -19,7 +19,6 @@ st.markdown("<h4><b>CHECK REVIEW STATUS OF PAPER WORK</b></h4>", unsafe_allow_ht
 total= 0
 district = ''
 cluster = ''
-ids = ''
 Intention = st.radio('**HOW MAY I HELP YOU?**', options=['MARK REVIEWED PAPER WORK', 'CHECK REVIEW STATUS'], index=None)
 file = r'PLANNED.csv'
 df = pd.read_csv(file)
@@ -63,6 +62,11 @@ if Intention == 'MARK REVIEWED PAPER WORK':
                 every = each+1
                 id = col1.number_input(label=f'**{m} for paper work {every}**', value=None,key=each, max_value=None, min_value=None,step=1, format="%d")
                 ids.append(id)
+                if not id:
+                     st.stop()
+                else:
+                     pass
+                     
             # col2.write('')
             # col2.write('')
             # submit = col2.button('SUBMIT')
