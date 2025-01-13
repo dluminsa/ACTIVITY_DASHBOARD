@@ -90,6 +90,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
     review['ID'] = pd.to_numeric(review['ID'], errors='coerce')
     idx = []
     idx = idx.append(int(i) for i in ids)
+    st.write(ids)
     st.write(idx)
     st.write(type(idx))
     st.stop()
