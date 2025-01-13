@@ -30,6 +30,8 @@ if Intention:
     pass
 else:
     st.stop()
+if 'sear' not in st.session_state:
+     st.session_state.sear = False
 
 if Intention == 'MARK REVIEWED PAPER WORK':
     coln, colm = st.columns([1,2])
