@@ -21,8 +21,9 @@ colc.write('')
 current_time = time.localtime()
 k = time.strftime("%V", current_time)
 t = int(k) + 13
+
 cola,colb,colc = st.columns([1,2,1])
-cola.write(f'**CURRENT WEEK IS: {k}**')
+cola.write(f'**CALENDAR WEEK IS: {k}**')
 colc.write(f'**SURGE WEEK IS: {t}**')
 try:
      conn = st.connection('gsheets', type=GSheetsConnection)     
@@ -147,8 +148,8 @@ else:
 
 if conducted>plan:
     st.warning(f"SOMETHING IS WRONG, IT SEEMS ACTIVITIES DONE ARE MORE THAN THOSE THAT WERE PLANNED FOR!!")
-expe = round((int(t)/12)*100)
-
+     
+expe = round(((int(t)-13)/13)*100)  #dividing by 13 weeks coz this Q has 13 weeks
 col1,col2,col3,col4,col5 = st.columns(5, gap='large')
 
 with col1:
@@ -164,7 +165,6 @@ with col5:
 ##################################################################################
 plan = filtered_dfa['AMOUNT'].sum()
 conducted = filtered_dfb['AMOUNT'].sum()
-st.write(filtered_dfb['AMOUNT'])
 notdone = plan - conducted
      
 with st.expander('CLICK HERE TO SEE EXPENDITURE'):
