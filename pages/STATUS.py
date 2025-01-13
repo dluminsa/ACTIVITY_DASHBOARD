@@ -55,7 +55,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
             ids.append(idea)
             col2.write('')
             col2.write('')
-            submit = col2.button('**SEARCH**')
+            search = col2.button('**SEARCH ID**')
         else:
             col1, col2,col3 = st.columns(3)
             m = 'IN PUT PAPER WORK IDS'      
@@ -70,10 +70,12 @@ if Intention == 'MARK REVIEWED PAPER WORK':
                      pass           
             col2.write('')
             col2.write('')
-            submit = col2.button('**SEARCH**')
-    st.write(ids)         
-    st.stop() 
-    if total:
+            search = col2.button('**SEARCH IDs**')
+    if not search:        
+         st.stop() 
+    else:
+         pass
+    if search:
         try:
              conn = st.connection('gsheets', type=GSheetsConnection)
              exist1 = conn.read(worksheet= 'DONE', usecols=list(range(12)),ttl=5)
@@ -86,10 +88,16 @@ if Intention == 'MARK REVIEWED PAPER WORK':
              st.stop()
     review = existing1[existing1['CLUSTER'] == cluster].copy()
     review['ID'] = pd.to_numeric(review['ID'], errors='coerce')
+    idx = []
+    idx = idx.append(int(i) for i in ids)
+    st.write(idx)
+    st.write(type(idx))
+    st.stop()
     @st.cache_data
     def finder ():
          idx = []
          idx = idx.append(int(i) for i in ids)
+         idx = list(idx)
          dfsee = review[review['ID'].isin(idx)].copy()
          return dfsee
     st.write('**FIRST CHECK THEM BEFORE SUBMISSION**')
