@@ -88,7 +88,7 @@ else:
     if cluster:
         try:
              conn = st.connection('gsheets', type=GSheetsConnection)
-             exist1 = conn.read(worksheet= 'DONE', usecols=list(range(10)),ttl=5)
+             exist1 = conn.read(worksheet= 'DONE', usecols=list(range(12)),ttl=5)
              exist2 = conn.read(worksheet= 'PAID', usecols=list(range(2)),ttl=5)
              existing1= exist1.dropna(how='all')
              existing2= exist2.dropna(how='all')
@@ -105,8 +105,8 @@ else:
             st.write('**NO PAPER WORK PENDING**')
             st.stop()
         else:
-            unpaid = unpaid[['DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','START DATE', 'END DATE', 'DATE OF SUBMISSION']]
-            st. markdown(f'YOU HAVE NOT REVIEWED {a} PAPER WORKS')
+            unpaid = unpaid[['DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','AMOUNT']]
+            st. markdown(f'YOU HAVE NOT REVIEWED {a} PAPER WORK(S)')
             with st.expander('CLICK HERE TO VIEW THEM'):
                 st.write(unpaid)
     else:
