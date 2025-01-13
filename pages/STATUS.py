@@ -217,7 +217,9 @@ else:
         
         st.write(done)
         st.write(paid)
-        dfa = done[(~done['FACILITY'].isin(paid['FACILITY'])) & (~done['ACTIVITY'].isin(paid['ACTIVITY'])) & (~done['ID'].isin(paid['ID'])) &(~done['AMOUNT'].isin(paid['AMOUNT']))].copy()
+        dfa = done[(~(done['FACILITY'].isin(paid['FACILITY'])) & (done['ACTIVITY'].isin(paid['ACTIVITY'])) & 
+                    (done['ID'].isin(paid['ID'])) &(done['AMOUNT'].isin(paid['AMOUNT'])))].copy()
+        #dfa = done[(~done['FACILITY'].isin(paid['FACILITY'])) & (~done['ACTIVITY'].isin(paid['ACTIVITY'])) & (~done['ID'].isin(paid['ID'])) &(~done['AMOUNT'].isin(paid['AMOUNT']))].copy()
         
         a = dfa.shape[0]
         if int(a) == 0:
