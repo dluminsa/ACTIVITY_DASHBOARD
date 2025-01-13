@@ -77,7 +77,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
             col2.write('')
             col2.write('')
             search = col2.button('**SEARCH IDs**')
-           if search:
+            if search:
                 st.session_state.preview_clicke = Truees
 
             if st.session_state.sear:
