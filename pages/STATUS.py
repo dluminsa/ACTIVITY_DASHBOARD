@@ -51,9 +51,9 @@ if Intention == 'MARK REVIEWED PAPER WORK':
             m = 'IN PUT PAPER WORK ID'
             idea = col1.number_input(label=f'**{m}**', value=None, max_value=None, min_value=None,step=1, format="%d")
             ids.append(ide)
-            # col2.write('')
-            # col2.write('')
-            # submit = col2.button('SUBMIT')
+            col2.write('')
+            col2.write('')
+            submit = col2.button('**SEARCH**')
         else:
             col1, col2,col3 = st.columns(3)
             m = 'IN PUT PAPER WORK IDS'      
@@ -65,12 +65,12 @@ if Intention == 'MARK REVIEWED PAPER WORK':
                 if not id:
                      st.stop()
                 else:
-                     pass
-                     
-            # col2.write('')
-            # col2.write('')
-            # submit = col2.button('SUBMIT')
-     
+                     pass           
+            col2.write('')
+            col2.write('')
+            submit = col2.button('**SEARCH**')
+    st.write(ids)         
+    st.stop() 
     if total:
         try:
              conn = st.connection('gsheets', type=GSheetsConnection)
