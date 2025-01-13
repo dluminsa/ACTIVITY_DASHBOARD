@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime
 from streamlit_gsheets import GSheetsConnection
 import streamlit as st
-import tim
+import time
 import datetime as dt
 from datetime import datetime, date
 from google.oauth2.service_account import Credentials
@@ -78,7 +78,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
             col2.write('')
             search = col2.button('**SEARCH IDs**')
             if search:
-                st.session_state.preview_clicke = Truees
+                st.session_state.preview_clicke = True
 
             if st.session_state.sear:
                   try:
