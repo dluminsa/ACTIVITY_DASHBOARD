@@ -70,6 +70,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
                      pass           
             col2.write('')
             col2.write('')
+            col2.write('')
             search = col2.button('**SEARCH IDs**')
     if not search:        
          st.stop() 
