@@ -81,6 +81,8 @@ if Intention == 'MARK REVIEWED PAPER WORK':
          st.stop() 
     else:
           st.session_state.sear = True
+    if search:
+      st.session_state.sear = True
 
     if st.session_state.sear:
         try:
