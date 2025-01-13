@@ -111,10 +111,15 @@ if Intention == 'MARK REVIEWED PAPER WORK':
          pass
     elif b>a:
          ad = dfa['ID'].tolist()
-         st.write(ids)
+         st.write(idx)
          abc = ids
          ab = set(abc) - set(ad)
-         st.warning(f'**THESE UNIQUE ID WERE NOT FOUND: {ab}**')
+         leg = len(list(ab))
+         ab = ','.join(ab)
+         if leg ==1:
+              st.warning(f'**THIS UNIQUE ID WAS NOT FOUND: {ab}**')   
+         elif leg > 1:
+              st.warning(f'**THESE UNIQUE ID WERE NOT FOUND: {ab}**')
          proc = st.radio('**DO YOU WANT TO PROCEED TO SUBMIT WITHOUT THEM**', options= ['YES', 'NO'], horizontal=True, index=None)
          if not proc:
               st.stop()
