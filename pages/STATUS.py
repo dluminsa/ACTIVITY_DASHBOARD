@@ -111,7 +111,6 @@ if Intention == 'MARK REVIEWED PAPER WORK':
          pass
     elif b>a:
          ad = dfa['ID'].tolist()
-         st.write(idx)
          abc = ids
          ab = set(abc) - set(ad)
          leg = len(list(ab))
