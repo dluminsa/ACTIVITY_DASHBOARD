@@ -163,18 +163,18 @@ with col4:
 with col5:
     st.metric(label='**NOT DONE**', value=f'{notdone:,.0f}')
 ##################################################################################
-plan = filtered_dfa['AMOUNT'].sum()
-conducted = filtered_dfb['AMOUNT'].sum()
-notdone = plan - conducted
+plana = filtered_dfa['AMOUNT'].sum()
+conducteda = filtered_dfb['AMOUNT'].sum()
+notdonea = planq - conductedq
      
 with st.expander('**CLICK HERE TO SEE EXPENDITURE**'):
      col1,col2,col3 = st.columns(3)#,
      with col1:
-         st.metric(label='**BUDGETED**', value=f'{plan:,.0f}')
+         st.metric(label='**BUDGETED**', value=f'{plana:,.0f}')
      with col2:
-         st.metric(label='**SPENT**', value=f'{conducted:,.0f}')
+         st.metric(label='**SPENT**', value=f'{conducteda:,.0f}')
      with col3:
-         st.metric(label='**BALANCE**', value=f'{notdone:,.0f}')
+         st.metric(label='**BALANCE**', value=f'{notdonea:,.0f}')
 
 #######################################################################################################
 #PIE CHART
@@ -190,7 +190,7 @@ fig = go.Figure(data=[go.Pie(labels=labels, values=values, textinfo='label+value
 
 # Updating the layout for better readability
 fig.update_traces(textposition='inside', textfont_size=20)
-fig.update_layout(title_text='DONE vs NOT DONE', title_x=0.3)
+fig.update_layout(title_text='DONE vs NOT DONE', title_x=0.2)
 
 col1, col2,col3 = st.columns([1,4,1])
 with col2:
