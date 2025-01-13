@@ -171,7 +171,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
                    st.write(traceback.format_exc())
                    st.write("COULDN'T CONNECT TO GOOGLE SHEET, TRY AGAIN")
                    st.stop()
-            
+     if submit: 
             try:
                st. write('SUBMITING')
                sheet1 = spreadsheet.worksheet("PAID")
