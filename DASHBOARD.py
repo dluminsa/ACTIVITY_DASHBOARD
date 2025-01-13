@@ -165,7 +165,7 @@ with col5:
 ##################################################################################
 plana = filtered_dfa['AMOUNT'].sum()
 conducteda = filtered_dfb['AMOUNT'].sum()
-notdonea = planq - conductedq
+notdonea = plana - conducteda
      
 with st.expander('**CLICK HERE TO SEE EXPENDITURE**'):
      col1,col2,col3 = st.columns(3)#,
