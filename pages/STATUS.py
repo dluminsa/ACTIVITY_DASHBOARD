@@ -132,11 +132,9 @@ if Intention == 'MARK REVIEWED PAPER WORK':
                         st.warning(f'**THESE UNIQUE ID WERE NOT FOUND: {ab}**')
                         proc = st.radio('**DO YOU WANT TO PROCEED TO SUBMIT WITHOUT THEM**', options= ['YES', 'NO'], horizontal=True, index=None)
                         if not proc:
-                             st.session_state.sear = True
                              st.stop()
                         elif proc == 'NO':
                              st.write('**REFRESH TO SEARCH AGAIN OR REMOVE IT FROM THE LIST ABOVE**')
-                             st.session_state.sear = False
                              st.stop
                         else:
                              st.session_state.sear = True
