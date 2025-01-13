@@ -214,8 +214,9 @@ else:
         done[['FACILITY', 'ACTIVITY']] = done[['FACILITY', 'ACTIVITY']].astype(str)
         done[['ID', 'AMOUNT']] = done[['ID', 'AMOUNT']].apply(pd.to_numeric, errors='coerce')
         paid[['ID', 'AMOUNT']] = paid[['ID', 'AMOUNT']].apply(pd.to_numeric, errors='coerce')
-        st.write(paid)
+        
         st.write(done)
+        st.write(paid)
         dfa = done[(~done['FACILITY'].isin(paid['FACILITY'])) & (~done['ACTIVITY'].isin(paid['ACTIVITY'])) & (~done['ID'].isin(paid['ID'])) &(~done['AMOUNT'].isin(paid['AMOUNT']))].copy()
         
         a = dfa.shape[0]
