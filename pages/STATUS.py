@@ -215,12 +215,10 @@ else:
         done[['ID', 'AMOUNT']] = done[['ID', 'AMOUNT']].apply(pd.to_numeric, errors='coerce')
         paid[['ID', 'AMOUNT']] = paid[['ID', 'AMOUNT']].apply(pd.to_numeric, errors='coerce')
         
-        st.write(done)
-        st.write(paid)
         dfa = done[(~(done['FACILITY'].isin(paid['FACILITY'])) & (done['ACTIVITY'].isin(paid['ACTIVITY'])) & 
                     (done['ID'].isin(paid['ID'])) &(done['AMOUNT'].isin(paid['AMOUNT'])))].copy()
         #dfa = done[(~done['FACILITY'].isin(paid['FACILITY'])) & (~done['ACTIVITY'].isin(paid['ACTIVITY'])) & (~done['ID'].isin(paid['ID'])) &(~done['AMOUNT'].isin(paid['AMOUNT']))].copy()
-        
+        st.write(dfa)
         a = dfa.shape[0]
         if int(a) == 0:
             st.write('**NO PAPER WORK PENDING**')
