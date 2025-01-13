@@ -107,8 +107,8 @@ if Intention == 'MARK REVIEWED PAPER WORK':
         else:
              pass
         st.write('**FIRST CHECK THEM BEFORE SUBMISSION**')
+        dfu = dfa[['CLUSTER','DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','AMOUNT']].copy()
         dfa = dfa[['DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','AMOUNT']].copy()
-        dfu = dfa.copy()
         dfa.index = pd.Index(range(1, len(dfa) + 1))
         st.write(dfa)
         a = dfa.shape[0]
