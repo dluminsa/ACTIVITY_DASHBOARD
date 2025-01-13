@@ -117,7 +117,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
          abs = [str(i) for i in ab]
          ab = ','.join(list(abs))
          if leg ==1:
-              st.warning(f'**THIS UNIQUE ID WAS NOT FOUND: {ab}**')   
+              st.warning(f'**UNIQUE ID {ab} WAS NOT FOUND**')   
          elif leg > 1:
               st.warning(f'**THESE UNIQUE ID WERE NOT FOUND: {ab}**')
          proc = st.radio('**DO YOU WANT TO PROCEED TO SUBMIT WITHOUT THEM**', options= ['YES', 'NO'], horizontal=True, index=None)
