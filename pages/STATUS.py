@@ -82,8 +82,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
     else:
           st.session_state.sear = True
 
-
-if st.session_state.sea r:
+if st.session_state.sear:
         try:
              conn = st.connection('gsheets', type=GSheetsConnection)
              exist1 = conn.read(worksheet= 'DONE', usecols=list(range(12)),ttl=5)
