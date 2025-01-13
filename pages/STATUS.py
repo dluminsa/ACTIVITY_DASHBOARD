@@ -88,17 +88,10 @@ if Intention == 'MARK REVIEWED PAPER WORK':
              st.stop()
     review = existing1[existing1['CLUSTER'] == cluster].copy()
     review['ID'] = pd.to_numeric(review['ID'], errors='coerce')
-    idx = []
-    idx = idx.append(int(i) for i in ids)
-    st.write(ids)
-    st.write(idx)
-    st.write(type(idx))
-    st.stop()
     @st.cache_data
     def finder ():
          idx = []
-         idx = idx.append(int(i) for i in ids)
-         idx = list(idx)
+         idx = [int(i) for i in ids]
          dfsee = review[review['ID'].isin(idx)].copy()
          return dfsee
     st.write('**FIRST CHECK THEM BEFORE SUBMISSION**')
