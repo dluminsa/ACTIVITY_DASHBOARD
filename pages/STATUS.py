@@ -96,7 +96,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
             review['ID'] = pd.to_numeric(review['ID'], errors='coerce')
             @st.cache_data
             def finder ():
-                  idx = []
+                   idx = []
                    idx = [int(i) for i in ids]
                    dfsee = review[review['ID'].isin(idx)].copy()
                    return dfsee
