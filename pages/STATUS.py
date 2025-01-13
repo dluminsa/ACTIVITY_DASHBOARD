@@ -93,6 +93,7 @@ if st.session_state.sear:
              st.write("POOR INTERNET, COULDN'T CONNECT TO THE GOOGLE SHEETS")
              st.write('Get better internet and try again')
              st.stop()
+if st.session_state.sear:
     review = existing1[existing1['CLUSTER'] == cluster].copy()
     review['ID'] = pd.to_numeric(review['ID'], errors='coerce')
     @st.cache_data
