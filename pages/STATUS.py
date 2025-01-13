@@ -83,7 +83,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
     def finder ():
          idx = []
          idx = idx.append(int(i) for i in ids)
-         dfsee = review[review['ID'].isin(idx)
+         dfsee = review[review['ID'].isin(idx)]
          return dfsee
     st.write('**FIRST CHECK THEM BEFORE SUBMISSION**')
     dfa = finder()
