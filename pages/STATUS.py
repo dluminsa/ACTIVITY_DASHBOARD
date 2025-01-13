@@ -5,6 +5,9 @@ import streamlit as st
 import time
 import datetime as dt
 from datetime import datetime, date
+from google.oauth2.service_account import Credentials
+from oauth2client.service_account import ServiceAccountCredentials
+import gspread
 
 st.cache_data.clear()
 st.cache_resource.clear()
@@ -103,6 +106,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
          pass
     st.write('**FIRST CHECK THEM BEFORE SUBMISSION**')
     dfa = dfa[['DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','AMOUNT']].copy()
+    dfu = dfa.copy()
     dfa.index = pd.Index(range(1, len(dfa) + 1))
     st.write(dfa)
     a = dfa.shape[0]
@@ -134,29 +138,56 @@ if Intention == 'MARK REVIEWED PAPER WORK':
     else:
          pass
     if submit:
-            if int(total)==1:
-                data1 = pd.DataFrame([{'PAID': idea}])
-            else:                  
-                data1 = pd.DataFrame(id, columns=['PAID'])
-            data2 = data1.dropna(how='all')
+            secrets = st.secrets["connections"]["gsheets"]
+            credentials_info = {
+                       "type": secrets["type"],
+                       "project_id": secrets["project_id"],
+                       "private_key_id": secrets["private_key_id"],
+                       "private_key": secrets["private_key"],
+                       "client_email": secrets["client_email"],
+                       "client_id": secrets["client_id"],
+                       "auth_uri": secrets["auth_uri"],
+                       "token_uri": secrets["token_uri"],
+                       "auth_provider_x509_cert_url": secrets["auth_provider_x509_cert_url"],
+                       "client_x509_cert_url": secrets["client_x509_cert_url"]
+                   }
+                       
             try:
-                st. write('SUBMITING ID')
-                conn = st.connection('gsheets', type=GSheetsConnection)
-                exist2 = conn.read(worksheet= 'PAID', usecols=list(range(2)),ttl=5)
-                existing2= exist2.dropna(how='all')
-                updated = pd.concat([existing2, data2], ignore_index =True)
-                existing2= exist2.dropna(how='all')
-                conn.update(worksheet = 'PAID', data = updated)         
-                st.success('ID above has been submitted')
-                st.write('RELOADING PAGE')
-                time.sleep(2)
-                st.markdown("""
-                <meta http-equiv="refresh" content="0">
+                   # Define the scopes needed for your application
+                   scopes = ["https://www.googleapis.com/auth/spreadsheets",
+                           "https://www.googleapis.com/auth/drive"]
+                   
+                    
+                   credentials = Credentials.from_service_account_info(credentials_info, scopes=scopes)
+                       
+                       # Authorize and access Google Sheets
+                   client = gspread.authorize(credentials)
+                       
+                       # Open the Google Sheet by URL
+                   spreadsheetu = " https://docs.google.com/spreadsheets/d/1IgIltX9_2yvppb4YYoebRyyYwCqYZng62h0cRYPmAdE"     
+                   spreadsheet = client.open_by_url(spreadsheetu)
+            except Exception as e:   
+                   st.write(f"CHECK: {e}")
+                   st.write(traceback.format_exc())
+                   st.write("COULDN'T CONNECT TO GOOGLE SHEET, TRY AGAIN")
+                   st.stop()
+            
+            try:
+               st. write('SUBMITING')
+               sheet1 = spreadsheet.worksheet("PAID")
+               rows_to_append = dfu.values.tolist()
+               sheet1.append_rows(rows_to_append, value_input_option='RAW')
+               st.success('Your data above has been submitted')
+               st.write('RELOADING PAGE')
+               time.sleep(3)
+               st.markdown("""
+               <meta http-equiv="refresh" content="0">
                     """, unsafe_allow_html=True)
 
             except:
-                    st.write("Couldn't submit, poor network") 
-                    st.write("Submit again")
+               st.write("Couldn't submit, poor network") 
+                 
+
 else:
 
     clusters  = df['CLUSTER'].unique()
