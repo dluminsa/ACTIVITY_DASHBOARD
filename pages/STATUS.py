@@ -114,8 +114,8 @@ if Intention == 'MARK REVIEWED PAPER WORK':
          abc = ids
          ab = set(abc) - set(ad)
          leg = len(list(ab))
-         ab = ','.join(list(ab))
-         ','.join(topdis3['DISTRICT'].unique())
+         abs = [str(i) for i in ab]
+         ab = ','.join(list(abs))
          if leg ==1:
               st.warning(f'**THIS UNIQUE ID WAS NOT FOUND: {ab}**')   
          elif leg > 1:
