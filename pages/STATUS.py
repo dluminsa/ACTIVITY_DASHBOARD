@@ -128,7 +128,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
               st.stop()
          else:
               pass
-    submit = st.submit('**SUBMIT**')  
+    submit = st.button('**SUBMIT**')  
     if not submit:
          st.stop()
     else:
