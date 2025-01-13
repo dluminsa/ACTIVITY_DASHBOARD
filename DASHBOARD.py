@@ -20,7 +20,7 @@ colb.markdown("<h4><b>ACTIVITIES DASHBOARD</b></h4>", unsafe_allow_html=True)
 colc.write('')
 current_time = time.localtime()
 k = time.strftime("%V", current_time)
-t = int(k) -39
+t = int(k) + 13
 cola,colb,colc = st.columns([1,2,1])
 cola.write(f'**CURRENT WEEK IS: {k}**')
 colc.write(f'**SURGE WEEK IS: {t}**')
@@ -32,7 +32,7 @@ except:
      st.write(f"**Your network is poor, couldn't connect to the google sheet**")
      st.write(f"**TRY AGAIN WITH BETTER INTERNET**")
      st.stop()
-dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID']].copy()
+dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID', 'AMOUNT']].copy()
 dfb[['DISTRICT','FACILITY', 'ACTIVITY']]  = dfb[['DISTRICT','FACILITY', 'ACTIVITY']].astype(str)
 
 dfb['DONE'] = pd.to_numeric(dfb['DONE'], errors='coerce')
@@ -44,7 +44,7 @@ file = r'PLANNED.csv'
 dfa = pd.read_csv(file)
 
 
-dfa= dfa[['DISTRICT', 'AREA','ACTIVITY', 'PLANNED']]
+dfa= dfa[['DISTRICT', 'AREA','ACTIVITY', 'PLANNED', 'AMOUNT']]
 
 dfb['WEEK'] = dfb['WEEK'].astype(int)
 dfb['DISTRICT'] = dfb['DISTRICT'].astype(str)
@@ -161,7 +161,19 @@ with col4:
     st.metric(label='**EXPECTED**', value=f'{int(expe)} %')
 with col5:
     st.metric(label='**NOT DONE**', value=f'{notdone:,.0f}')
+##################################################################################
+plan = filtered_dfa['AMOUNT'].sum()
+conducted = filtered_dfb['AMOUNT'].sum()
+notdone = plan - conducted
      
+with st.expander('CLICK HERE TO SEE EXPENDITURE'):
+     col1,col2,col3 = st.columns(3)#,
+     with col1:
+         st.metric(label='**BUDGETED**', value=f'{plan:,.0f}')
+     with col2:
+         st.metric(label='**SPENT**', value=f'{conducted:,.0f}')
+     with col3:
+         st.metric(label='**BALANCE**', value=f'{notdone:,.0f}')
 
 #######################################################################################################
 #PIE CHART
