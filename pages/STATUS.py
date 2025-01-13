@@ -208,6 +208,8 @@ else:
              st.stop()
         paid = paid[paid['CLUSTER'] == cluster].copy()
         done = done[done['CLUSTER'] == cluster].copy()
+        st.write(paid)
+        st.write(done)
         paid = paid[['FACILITY', 'ACTIVITY', 'ID', 'AMOUNT']].copy()
         done = done[['DISTRICT','FACILITY', 'ACTIVITY', 'ID', 'AMOUNT']].copy()
         paid[['FACILITY', 'ACTIVITY']] = paid[['FACILITY', 'ACTIVITY']].astype(str)
