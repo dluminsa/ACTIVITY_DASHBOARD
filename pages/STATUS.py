@@ -94,14 +94,14 @@ if Intention == 'MARK REVIEWED PAPER WORK':
          idx = [int(i) for i in ids]
          dfsee = review[review['ID'].isin(idx)].copy()
          return dfsee
-    st.write('**FIRST CHECK THEM BEFORE SUBMISSION**')
-    dfa = finder()
-    dfa = dfa[['DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','AMOUNT']].copy()
     if dfa.shape[0] == 0:
          st.warning("**ID(s) NOT FOUND**")
          st.stop()
     else:
          pass
+    st.write('**FIRST CHECK THEM BEFORE SUBMISSION**')
+    dfa = finder()
+    dfa = dfa[['DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','AMOUNT']].copy()
     st.write(dfa)
     a = dfa.shape[0]
     b = len(ids)
