@@ -124,14 +124,14 @@ if Intention == 'MARK REVIEWED PAPER WORK':
               st.warning(f'**UNIQUE ID {ab} WAS NOT FOUND**')   
          elif leg > 1:
               st.warning(f'**THESE UNIQUE ID WERE NOT FOUND: {ab}**')
-         proc = st.radio('**DO YOU WANT TO PROCEED TO SUBMIT WITHOUT THEM**', options= ['YES', 'NO'], horizontal=True, index=None)
-         if not proc:
-              st.stop()
-         elif proc == 'NO':
-              st.write('**REFRESH TO SEARCH AGAIN OR REMOVE IT FROM THE LIST ABOVE**')
-              st.stop()
+              proc = st.radio('**DO YOU WANT TO PROCEED TO SUBMIT WITHOUT THEM**', options= ['YES', 'NO'], horizontal=True, index=None)
+              if not proc:
+                   st.stop()
+              elif proc == 'NO':
+                   st.write('**REFRESH TO SEARCH AGAIN OR REMOVE IT FROM THE LIST ABOVE**')
+                   st.stop()
          else:
-              pass
+             pass
     submit = st.button('**SUBMIT**')  
     if not submit:
          st.stop()
