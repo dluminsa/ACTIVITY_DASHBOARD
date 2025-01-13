@@ -39,7 +39,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
          pass
     c = 'HOW MANY DO YOU HAVE?'
     coln, colm = st.columns([1,2])
-    total = coln.number_input(label=f'**{c}**', value=None, max_value=None, min_value=None,step=1, format="%d")
+    total = coln.number_input(label=f'**{c}**', value=None, max_value=15, min_value=1,step=1, format="%d")
     if total:
          pass
     else:
