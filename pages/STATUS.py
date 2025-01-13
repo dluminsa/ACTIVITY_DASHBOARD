@@ -198,24 +198,30 @@ else:
     if cluster:
         try:
              conn = st.connection('gsheets', type=GSheetsConnection)
-             exist1 = conn.read(worksheet= 'DONE', usecols=list(range(12)),ttl=5)
-             exist2 = conn.read(worksheet= 'PAID', usecols=list(range(2)),ttl=5)
-             existing1= exist1.dropna(how='all')
-             existing2= exist2.dropna(how='all')
+             done = conn.read(worksheet= 'DONE', usecols=list(range(12)),ttl=5)
+             paid = conn.read(worksheet= 'PAID', usecols=list(range(6)),ttl=5)
+             done= done.dropna(how='all')
+             paid= paid.dropna(how='all')
         except:
              st.write("POOR INTERNET, COULDN'T CONNECT TO THE GOOGLE SHEETS")
              st.write('Get better internet and try again')
              st.stop()
-        sent = existing1[existing1['CLUSTER'] == cluster].copy()
-        sent['ID'] =sent['ID'].astype(int)
-        existing2['PAID'] =existing2['PAID'].astype(int)
-        unpaid = sent[~sent['ID'].isin(existing2['PAID'])].copy()
-        a = unpaid.shape[0]
+        paid = paid[paid['CLUSTER'] == cluster].copy()
+        done = done[done['CLUSTER'] == cluster].copy()
+        paid = paid[['FACILITY', 'ACTIVITY', 'ID', 'AMOUNT']].copy()
+        done = done[['DISTRICT','FACILITY', 'ACTIVITY', 'ID', 'AMOUNT']].copy()
+        paid[['FACILITY', 'ACTIVITY']] = paid[['FACILITY', 'ACTIVITY']].astype(str)
+        done[['FACILITY', 'ACTIVITY']] = done[['FACILITY', 'ACTIVITY']].astype(str)
+        done[['ID', 'AMOUNT']] = done[['ID', 'AMOUNT']].apply(pd.to_numeric, errors='coerce')
+        paid[['ID', 'AMOUNT']] = paid[['ID', 'AMOUNT']].apply(pd.to_numeric, errors='coerce')
+        dfa = done[(~done['FACILITY'].isin(paid['FACILITY'])) & (~done['ACTIVITY'].isin(paid['ACTIVITY'])) & (~done['ID'].isin(paid['ID'])) &(~done['AMOUNT'].isin(paid['AMOUNT']))].copy()
+        
+        a = dfa.shape[0]
         if int(a) == 0:
             st.write('**NO PAPER WORK PENDING**')
             st.stop()
         else:
-            unpaid = unpaid[['DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','AMOUNT']]
+            unpaid = dfa[['DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','AMOUNT']].copy()
             st. markdown(f'YOU HAVE NOT REVIEWED {a} PAPER WORK(S)')
             with st.expander('CLICK HERE TO VIEW THEM'):
                 st.write(unpaid)
