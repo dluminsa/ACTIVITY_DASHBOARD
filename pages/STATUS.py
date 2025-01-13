@@ -6,6 +6,8 @@ import time
 import datetime as dt
 from datetime import datetime, date
 
+st.cache_data.clear()
+st.cache_resource.clear()
 
 st.set_page_config(
      page_title= 'ACTIVITIES REVIEW STATUS'
@@ -29,34 +31,84 @@ else:
 
 if Intention == 'MARK REVIEWED PAPER WORK':
     coln, colm = st.columns([1,2])
+    clusters  = df['CLUSTER'].unique()
+    cluster = st.radio("**Choose a cluster:**", clusters,horizontal=True, index=None)
+    if not cluster:
+         st.stop()
+    else:
+         pass
     c = 'HOW MANY DO YOU HAVE?'
     total = coln.number_input(label=f'**{c}**', value=None, max_value=None, min_value=None,step=1, format="%d")
     if total:
          pass
     else:
          st.stop()
-    id = []
+         
+    ids = []
     if total:
         if int(total)==1:     
             col1, col2,col3 = st.columns(3)
             m = 'IN PUT PAPER WORK ID'
             idea = col1.number_input(label=f'**{m}**', value=None, max_value=None, min_value=None,step=1, format="%d")
-            #id.append(ids)
-            col2.write('')
-            col2.write('')
-            submit = col2.button('SUBMIT')
+            ids.append(ide)
+            # col2.write('')
+            # col2.write('')
+            # submit = col2.button('SUBMIT')
         else:
             col1, col2,col3 = st.columns(3)
-            m = 'IN PUT PAPER WORK ID'      
+            m = 'IN PUT PAPER WORK IDS'      
             for each in range(int(total)):
                 col1, col2,col3 = st.columns(3)
                 every = each+1
-                ids = col1.number_input(label=f'**{m} for paper work {every}**', value=None,key=each, max_value=None, min_value=None,step=1, format="%d")
-                id.append(ids)
-            col2.write('')
-            col2.write('')
-            submit = col2.button('SUBMIT')
-   
+                id = col1.number_input(label=f'**{m} for paper work {every}**', value=None,key=each, max_value=None, min_value=None,step=1, format="%d")
+                ids.append(id)
+            # col2.write('')
+            # col2.write('')
+            # submit = col2.button('SUBMIT')
+     
+    if total:
+        try:
+             conn = st.connection('gsheets', type=GSheetsConnection)
+             exist1 = conn.read(worksheet= 'DONE', usecols=list(range(12)),ttl=5)
+             exist2 = conn.read(worksheet= 'PAID', usecols=list(range(2)),ttl=5)
+             existing1= exist1.dropna(how='all')
+             existing2= exist2.dropna(how='all')
+        except:
+             st.write("POOR INTERNET, COULDN'T CONNECT TO THE GOOGLE SHEETS")
+             st.write('Get better internet and try again')
+             st.stop()
+    review = existing1[existing1['CLUSTER'] == cluster].copy()
+    review['ID'] = pd.to_numeric(review['ID'], errors='coerce')
+    @st.cache_data
+    def finder ():
+         idx = []
+         idx = idx.append(int(i) for i in ids)
+         dfsee = review[review['ID'].isin(idx)
+         return dfsee
+    st.write('**FIRST CHECK THEM BEFORE SUBMISSION**')
+    dfa = finder()
+    dfa = dfa[['DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','AMOUNT']].copy()
+    st.write(dfa)
+    a = dfa.shape[0]
+    b = len(ids)
+    if a = b:
+         pass
+    elif b>a:
+         ad = dfa['ID'].tolist()
+         ab = set(b) - set(ad)
+         st.warning(f'**THESE UNIQUE ID WERE NOT FOUND: {ab}**')
+         proc = st.radio('**DO YOU WANT TO PROCEED TO SUBMIT WITHOUT THEM**', options= ['YES', 'NO'], horizontal=True, index=None)
+         if not proc:
+              st.stop()
+         elif proc == 'NO':
+              st.write('**REFRESH TO SEARCH AGAIN OR CONTACT DEVELOPER, AND CLICK ON YES ABOVE**')
+              st.stop()
+         else:
+              pass
+                         
+          
+         
+    st.stop()
     if submit:
             if int(total)==1:
                 data1 = pd.DataFrame([{'PAID': idea}])
@@ -66,7 +118,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
             try:
                 st. write('SUBMITING ID')
                 conn = st.connection('gsheets', type=GSheetsConnection)
-                exist2 = conn.read(worksheet= 'PAID', usecols=list(range(1)),ttl=5)
+                exist2 = conn.read(worksheet= 'PAID', usecols=list(range(2)),ttl=5)
                 existing2= exist2.dropna(how='all')
                 updated = pd.concat([existing2, data2], ignore_index =True)
                 existing2= exist2.dropna(how='all')
