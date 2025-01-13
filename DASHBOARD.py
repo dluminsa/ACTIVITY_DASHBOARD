@@ -167,7 +167,7 @@ plan = filtered_dfa['AMOUNT'].sum()
 conducted = filtered_dfb['AMOUNT'].sum()
 notdone = plan - conducted
      
-with st.expander('CLICK HERE TO SEE EXPENDITURE'):
+with st.expander('**CLICK HERE TO SEE EXPENDITURE**'):
      col1,col2,col3 = st.columns(3)#,
      with col1:
          st.metric(label='**BUDGETED**', value=f'{plan:,.0f}')
