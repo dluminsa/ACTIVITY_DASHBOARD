@@ -50,7 +50,8 @@ dfb['WEEK'] = dfb['WEEK'].astype(int)
 dfb['DISTRICT'] = dfb['DISTRICT'].astype(str)
 dfb['AREA'] = dfb['AREA'].astype(str)
 dfb['ACTIVITY'] = dfb['ACTIVITY'].astype(str)
-dfb['DONE'] = dfb['DONE'].astype(int)
+dfb['DONE'] = pd.to_numeric(dfb['DONE'], errors = 'coerce')
+dfb['DONE']
 
 dfa['DISTRICT'] = dfa['DISTRICT'].astype(str)
 dfa['AREA'] = dfa['AREA'].astype(str)
