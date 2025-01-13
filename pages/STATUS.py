@@ -104,6 +104,7 @@ if Intention == 'MARK REVIEWED PAPER WORK':
     st.write('**FIRST CHECK THEM BEFORE SUBMISSION**')
     dfa = dfa[['DISTRICT', 'FACILITY', 'ACTIVITY', 'ID','AMOUNT']].copy()
     st.write(dfa)
+    dfa.index = pd.Index(range(1, len(dfa) + 1))
     a = dfa.shape[0]
     b = len(ids)
     if a == b:
