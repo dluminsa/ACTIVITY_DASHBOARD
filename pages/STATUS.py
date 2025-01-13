@@ -124,14 +124,15 @@ if Intention == 'MARK REVIEWED PAPER WORK':
          if not proc:
               st.stop()
          elif proc == 'NO':
-              st.write('**REFRESH TO SEARCH AGAIN OR CONTACT DEVELOPER, AND CLICK ON YES ABOVE**')
+              st.write('**REFRESH TO SEARCH AGAIN OR REMOVE IT FROM THE LIST ABOVE**')
               st.stop()
          else:
               pass
-                         
-          
-         
-    st.stop()
+    submit = st.submit('**SUBMIT**')  
+    if not submit:
+         st.stop()
+    else:
+         pass
     if submit:
             if int(total)==1:
                 data1 = pd.DataFrame([{'PAID': idea}])
