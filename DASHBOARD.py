@@ -46,12 +46,11 @@ dfa = pd.read_csv(file)
 dfa= dfa[['DISTRICT', 'AREA','ACTIVITY', 'PLANNED', 'AMOUNT']]
 
 dfb['WEEK'] = pd.to_numeric(dfb['WEEK'], errors='coerce')
-dfb['WEEK']
+
 dfb['DISTRICT'] = dfb['DISTRICT'].astype(str)
 dfb['AREA'] = dfb['AREA'].astype(str)
 dfb['ACTIVITY'] = dfb['ACTIVITY'].astype(str)
 dfb['DONE'] = pd.to_numeric(dfb['DONE'], errors = 'coerce')
-dfb['DONE']
 
 dfa['DISTRICT'] = dfa['DISTRICT'].astype(str)
 dfa['AREA'] = dfa['AREA'].astype(str)
@@ -165,6 +164,7 @@ with col5:
 ##################################################################################
 plan = filtered_dfa['AMOUNT'].sum()
 conducted = filtered_dfb['AMOUNT'].sum()
+st.write(filtered_dfb['AMOUNT'])
 notdone = plan - conducted
      
 with st.expander('CLICK HERE TO SEE EXPENDITURE'):
