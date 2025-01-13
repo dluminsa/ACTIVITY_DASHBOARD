@@ -80,8 +80,8 @@ if Intention == 'MARK REVIEWED PAPER WORK':
     if not search:        
          st.stop() 
     else:
-         pass
-    if search:
+          st.session_state.sear = True
+    if st.session_state.sear:
         try:
              conn = st.connection('gsheets', type=GSheetsConnection)
              exist1 = conn.read(worksheet= 'DONE', usecols=list(range(12)),ttl=5)
@@ -128,12 +128,16 @@ if Intention == 'MARK REVIEWED PAPER WORK':
               st.warning(f'**THESE UNIQUE ID WERE NOT FOUND: {ab}**')
               proc = st.radio('**DO YOU WANT TO PROCEED TO SUBMIT WITHOUT THEM**', options= ['YES', 'NO'], horizontal=True, index=None)
               if not proc:
+                   st.session_state.sear = True
                    st.stop()
               elif proc == 'NO':
                    st.write('**REFRESH TO SEARCH AGAIN OR REMOVE IT FROM THE LIST ABOVE**')
-                   st.stop()
+                   st.session_state.sear = False
+                   st.stop
+              else:
+                   st.session_state.sear = True
          else:
-             pass
+             st.session_state.sear = True
     submit = st.button('**SUBMIT**')  
     if not submit:
          st.stop()
