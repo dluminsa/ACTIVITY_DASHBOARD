@@ -76,13 +76,9 @@ if Intention == 'MARK REVIEWED PAPER WORK':
             col2.write('')
             col2.write('')
             col2.write('')
-            if len(ids) >1:
-                 st.session_state.sear = True
             search = col2.button('**SEARCH IDs**')
-            if not search:        
-                   st.stop() 
-            else:
-               pass
+           if search:
+                st.session_state.preview_clicke = Truees
 
             if st.session_state.sear:
                   try:
