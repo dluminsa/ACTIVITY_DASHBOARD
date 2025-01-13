@@ -26,7 +26,7 @@ cola.write(f'**CURRENT WEEK IS: {k}**')
 colc.write(f'**SURGE WEEK IS: {t}**')
 try:
      conn = st.connection('gsheets', type=GSheetsConnection)     
-     dfb = conn.read(worksheet='DONE', usecols=list(range(11)), ttl=5)
+     dfb = conn.read(worksheet='DONE', usecols=list(range(12)), ttl=5)
      dfb = dfb.dropna(how='all')
 except:
      st.write(f"**Your network is poor, couldn't connect to the google sheet**")
