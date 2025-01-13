@@ -43,10 +43,10 @@ dfb = dfb.drop_duplicates(subset = ['ID','DONE','DISTRICT', 'FACILITY', 'ACTIVIT
 file = r'PLANNED.csv'
 dfa = pd.read_csv(file)
 
-
 dfa= dfa[['DISTRICT', 'AREA','ACTIVITY', 'PLANNED', 'AMOUNT']]
 
-dfb['WEEK'] = dfb['WEEK'].astype(int)
+dfb['WEEK'] = pd.to_numeric(dfb['WEEK'], errors='coerce')
+dfb['WEEK']
 dfb['DISTRICT'] = dfb['DISTRICT'].astype(str)
 dfb['AREA'] = dfb['AREA'].astype(str)
 dfb['ACTIVITY'] = dfb['ACTIVITY'].astype(str)
