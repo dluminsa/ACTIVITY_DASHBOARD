@@ -258,7 +258,7 @@ for ary in areas:
          pass                 
                           
 
-filtered_dfc= filtered_dfb[['CLUSTER','DISTRICT','FACILITY' ,'AREA','ACTIVITY', 'DONE', 'WEEK']]
+filtered_dfc= filtered_dfb[['CLUSTER','DISTRICT','FACILITY' ,'AREA','ACTIVITY', 'DONE', 'WEEK', 'AMOUNT']]
 with st.expander(f'**CLICK HERE TO SEE FULL DATA SET**'):
     st.dataframe(filtered_dfc.reset_index(drop=True))
     csv_data = filtered_dfc.to_csv(index=False)
