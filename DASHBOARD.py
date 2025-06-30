@@ -33,7 +33,7 @@ except:
      st.write(f"**Your network is poor, couldn't connect to the google sheet**")
      st.write(f"**TRY AGAIN WITH BETTER INTERNET**")
      st.stop()
-dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID', 'AMOUNT']].copy()
+dfb= dfb[['CLUSTER','DISTRICT', 'AREA','ACTIVITY', 'DONE', 'WEEK','FACILITY', 'ID', 'AMOUNT','DATE OF SUBMISSION']].copy()
 dfb[['DISTRICT','FACILITY', 'ACTIVITY']]  = dfb[['DISTRICT','FACILITY', 'ACTIVITY']].astype(str)
 
 dfb['DONE'] = pd.to_numeric(dfb['DONE'], errors='coerce')
@@ -44,7 +44,7 @@ dfb = dfb.drop_duplicates(subset = ['ID','DONE','DISTRICT', 'FACILITY', 'ACTIVIT
 file = r'PLANNED.csv'
 dfa = pd.read_csv(file)
 
-dfa= dfa[['DISTRICT', 'AREA','ACTIVITY', 'PLANNED', 'AMOUNT']]
+dfa= dfa[['DISTRICT', 'AREA','ACTIVITY', 'PLANNED', 'AMOUNT','DATE OF SUBMISSION']]
 
 dfb['WEEK'] = pd.to_numeric(dfb['WEEK'], errors='coerce')
 
