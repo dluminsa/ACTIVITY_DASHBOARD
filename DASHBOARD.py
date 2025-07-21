@@ -43,7 +43,7 @@ dfb = dfb.drop_duplicates(subset = ['ID','DONE','DISTRICT', 'FACILITY', 'ACTIVIT
 
 file = r'PLANNED.csv'
 dfa = pd.read_csv(file)
-st.write(dfa)
+
 dfa= dfa[['DISTRICT', 'AREA','ACTIVITY', 'PLANNED', 'AMOUNT']]
 
 dfb['WEEK'] = pd.to_numeric(dfb['WEEK'], errors='coerce')
@@ -165,6 +165,8 @@ with col5:
 ##################################################################################
 plana = filtered_dfa['AMOUNT'].sum()
 conducteda = filtered_dfb['AMOUNT'].sum()
+st.write(plana)
+st.write(conducteda)
 notdonea = plana - conducteda
      
 with st.expander('**CLICK HERE TO SEE EXPENDITURE**'):
