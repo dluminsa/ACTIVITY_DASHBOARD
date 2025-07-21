@@ -167,8 +167,6 @@ filtered_dfa['AMOUNT'] = pd.to_numeric(filtered_dfa['AMOUNT'], errors='coerce')
 filt = filtered_dfa[filtered_dfa['AMOUNT']>0].copy()
 plana = filt['AMOUNT'].sum()
 conducteda = filtered_dfb['AMOUNT'].sum()
-st.write(plana)
-st.write(conducteda)
 notdonea = plana - conducteda
      
 with st.expander('**CLICK HERE TO SEE EXPENDITURE**'):
