@@ -163,6 +163,7 @@ with col4:
 with col5:
     st.metric(label='**NOT DONE**', value=f'{notdone:,.0f}')
 ##################################################################################
+filtered_dfa['AMOUNT'] = pd.to_numeric(filtered_dfa['AMOUNT'], errors='coerce')
 filt = filtered_dfa[filtered_dfa['AMOUNT']>0].copy()
 plana = filt['AMOUNT'].sum()
 conducteda = filtered_dfb['AMOUNT'].sum()
