@@ -163,7 +163,8 @@ with col4:
 with col5:
     st.metric(label='**NOT DONE**', value=f'{notdone:,.0f}')
 ##################################################################################
-plana = filtered_dfa['AMOUNT'].sum()
+filt = filtered_dfa[filtered_dfa['AMOUNT']>0].copy()
+plana = filt['AMOUNT'].sum()
 conducteda = filtered_dfb['AMOUNT'].sum()
 st.write(plana)
 st.write(conducteda)
