@@ -168,14 +168,17 @@ filt = filtered_dfa[filtered_dfa['AMOUNT']>0].copy()
 plana = filt['AMOUNT'].sum()
 conducteda = filtered_dfb['AMOUNT'].sum()
 notdonea = plana - conducteda
+pers = int((conducteda/plana)*100)
      
 #with st.expander('**CLICK HERE TO SEE EXPENDITURE**'):
-col1,col2,col3 = st.columns(3)#,
+col1,col2,col3,col4 = st.columns(4)#,
 with col1:
     st.metric(label='**BUDGETED**', value=f'{plana:,.0f}')
 with col2:
     st.metric(label='**SPENT**', value=f'{conducteda:,.0f}')
 with col3:
+    st.metric(label='**%SPENT**', value=f'{pers:,.0f} %')
+with col4:
     st.metric(label='**BALANCE**', value=f'{notdonea:,.0f}')
 
 #######################################################################################################
