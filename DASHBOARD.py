@@ -152,16 +152,16 @@ if conducted>plan:
 expe = round(((int(t)-13)/13)*100)  #dividing by 13 weeks coz this Q has 13 weeks
 col1,col2,col3,col4,col5 = st.columns(5, gap='large')
 
-with col1:
-    st.metric(label='**PLANNED**', value=f'{plan:,.0f}')
-with col2:
-    st.metric(label='**CONDUCTED**', value=f'{conducted:,.0f}')
-with col3:
-    st.metric(label='**%-AGE**', value=f'{int(perc)} %')
-with col4:
-    st.metric(label='**EXPECTED**', value=f'{int(expe)} %')
-with col5:
-    st.metric(label='**NOT DONE**', value=f'{notdone:,.0f}')
+# with col1:
+#     st.metric(label='**PLANNED**', value=f'{plan:,.0f}')
+# with col2:
+#     st.metric(label='**CONDUCTED**', value=f'{conducted:,.0f}')
+# with col3:
+#     st.metric(label='**%-AGE**', value=f'{int(perc)} %')
+# with col4:
+#     st.metric(label='**EXPECTED**', value=f'{int(expe)} %')
+# with col5:
+#     st.metric(label='**NOT DONE**', value=f'{notdone:,.0f}')
 ##################################################################################
 filtered_dfa['AMOUNT'] = pd.to_numeric(filtered_dfa['AMOUNT'], errors='coerce')
 filt = filtered_dfa[filtered_dfa['AMOUNT']>0].copy()
