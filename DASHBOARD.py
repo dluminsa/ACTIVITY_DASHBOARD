@@ -236,6 +236,11 @@ for area in areas:
                dfplanb = dfplana[dfplana['ACTIVITY']== activity].copy()
                dfspentb = dfspenta[dfspenta['ACTIVITY']== activity].copy()
                districts = dfplana['DISTRICT'].unique()
+               col1, col2, col3,col4 = st.columns(4)
+               col1.markdown('**DISTRICT**')
+               col2.markdown('**PLANNED**')
+               col3.markdown('**SPENT**')
+               col4.markdown('**BALANCE**')
                for district in districts:
                     dfplanc = dfplanb[dfplanb['DISTRICT']== district].copy()
                     dfspentc = dfspentb[dfspentb['DISTRICT']== district].copy()
@@ -253,10 +258,10 @@ for area in areas:
                          balc = 0
                  
                     col1, col2, col3,col4 = st.columns(4)
-                    col1.markdown('**DISTRICT**')
-                    col2.markdown('**PLANNED**')
-                    col3.markdown('**SPENT**')
-                    col4.markdown('**BALANCE**')
+                    # col1.markdown('**DISTRICT**')
+                    # col2.markdown('**PLANNED**')
+                    # col3.markdown('**SPENT**')
+                    # col4.markdown('**BALANCE**')
                     col1.markdown(f"**{district}**")
                     col2.markdown(f'{planc:,.0f}')
                     col3.markdown(f'{spentc:,.0f}')
