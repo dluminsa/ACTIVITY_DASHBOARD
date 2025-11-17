@@ -1,4 +1,4 @@
-import pandas as pda 
+import pandas as pd
 import streamlit as st 
 import os
 import numpy as np
