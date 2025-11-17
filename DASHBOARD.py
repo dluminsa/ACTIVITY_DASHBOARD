@@ -169,8 +169,8 @@ plana = filt['AMOUNT'].sum()
 conducteda = filtered_dfb['AMOUNT'].sum()
 notdonea = plana - conducteda
      
-with st.expander('**CLICK HERE TO SEE EXPENDITURE**'):
-     col1,col2,col3 = st.columns(3)#,
+#with st.expander('**CLICK HERE TO SEE EXPENDITURE**'):
+col1,col2,col3 = st.columns(3)#,
      with col1:
          st.metric(label='**BUDGETED**', value=f'{plana:,.0f}')
      with col2:
