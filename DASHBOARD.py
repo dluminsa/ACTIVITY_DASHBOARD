@@ -165,8 +165,10 @@ col1,col2,col3,col4,col5 = st.columns(5, gap='large')
 ##################################################################################
 filtered_dfa['AMOUNT'] = pd.to_numeric(filtered_dfa['AMOUNT'], errors='coerce')
 filt = filtered_dfa[filtered_dfa['AMOUNT']>0].copy()
+dfplan = filt.copy()
 plana = filt['AMOUNT'].sum()
 conducteda = filtered_dfb['AMOUNT'].sum()
+dfspent = filtered_dfb.copy()
 notdonea = plana - conducteda
 pers = int((conducteda/plana)*100)
      
@@ -215,52 +217,95 @@ fig2.update_layout(xaxis_title='WEEK', yaxis_title='TOTAL DONE',
                      yaxis=dict(showline=True, linewidth=1, linecolor='black'))  # Show y-axis line)
 
 st.plotly_chart(fig2, use_container_width=True)
-dists = filtered_dfb['DISTRICT'].unique()
-facys = filtered_dfb['FACILITY'].unique()
-areas = filtered_dfb['AREA'].unique()
+# dists = filtered_dfb['DISTRICT'].unique()
+# facys = filtered_dfb['FACILITY'].unique()
+# areas = filtered_dfb['AREA'].unique()
 
-chec = len(dists)
 
-for ary in areas:
-     allya = filtered_dfb[filtered_dfb['AREA']==ary] 
-     allyf = filtered_dfa[filtered_dfa['AREA']==ary]  
-     if chec>1:
-          st.divider()
-          st.markdown(f'<h4><b><u style="color: green;">DISTRICT PERFORMANCE IN {ary}</u></b></h4>', unsafe_allow_html=True)
-         # st.write(f'**DISTRICT PERFORMANCE IN {ary}**')
-          cola, colb, colc, cold = st.columns([2,1,1,1])
-          cola.write('**DISTRICT**')
-          colb.write('**PLANNED**')
-          colc.write('**DONE**')
-          cold.write('**BALANCE**')
-          for district in dists:
-               ally = allya[allya['DISTRICT']==district]
-               allyp = allyf[allyf['DISTRICT']==district]
-               plan = allyp['PLANNED'].sum()
-               conducted = ally['DONE'].sum()
-               notdone = plan - conducted
-               cola.write(f'**{district}**')
-               colb.write(f'**{plan}**')
-               colc.write(f'**{conducted}**')
-               cold.write(f'**{notdone}**')
-     elif chec==1:
-          st.divider() 
-          disy = ','.join(district)
-          st.markdown(f'<h5><b><u style="color: green;">FACILITY PERFORMANCE IN {ary} ACTIVITIES IN {disy}</u></b></h5>', unsafe_allow_html=True)
-          #st.write(f'**FACILITY PERFORMANCE IN {ary} IN {district}**')
-          st.divider()
-          cola, colb, colc = st.columns([2,1,1])
-          cola.write('**FACILITY**')
-          colc.write('**DONE**')
-          for fact in facys:
-               dists = allya['DISTRICT'].unique()
-               allyg = allya[allya['DISTRICT'].isin(dists)]
-               ally = allyg[allyg['FACILITY']==fact]
-               conducted = ally['DONE'].sum()
-               cola.write(f'**{fact}**')
-               colc.write(f'**{conducted}**')
-     else:
-         pass                 
+areas = dfplan['AREA'].unique()
+
+for area in areas:
+     col1,col2, col3 = st.columns(3)
+     col3.markdown(f'<h4><b><u style="color: green;">{area}</u></b></h4>', unsafe_allow_html=True)
+     dfplana = dfplan[dfplan['AREA']== area].copy()
+     dfspenta = dfspent[dfspent['AREA']== area].copy()
+     activities = dfplana['ACTIVITY'].unique()
+     
+     for activity in dactivities:
+               st.markdown(f'<h4><b><u style="color: black;">{activity}</u></b></h4>', unsafe_allow_html=True) 
+               dfplanb = dfplana[dfplana['ACTIVITY']== activity].copy()
+               dfspentb = dfspenta[dfspenta['ACTIVITY']== activity].copy()
+               districts = dfplana['DISTRICT'].unique()
+               for district in districts:
+                    dfplanc = dfplanb[dfplanb['DISTRICT']== district].copy()
+                    dfspentc = dfspentb[dfspentb['DISTRICT']== district].copy()
+                    try:
+                         dfplanc['AMOUNT'] = pd.to_numeric(dfplanc['AMOUNT'], errors='coerce')
+                         dfspentc['AMOUNT'] = pd.to_numeric(dfspentc['AMOUNT'], errors='coerce')
+                         planc = dfplanc['AMOUNT'].sum()
+                         spentc =  dfspentc['AMOUNT'].sum()
+                         bal = planc - spentc
+                    except:
+                         spentc = 0
+                         planc = 0
+                         balc = 0
+                    if balc <0:
+                         st.warning('**ERROR**')
+                    else:
+                         pass
+                    col1, col2, col3,col4 = st.columns(4)
+                    col1.markdown('**DISTRICT**')
+                    col2.markdown('**PLANNED**')
+                    col3.markdown('**SPENT**')
+                    col4.markdown('**BALANCE**')
+                    col1.markdown("**f{district}**")
+                    col2.markdown(f'{planc:,.0f}')
+                    col3.markdown(f'{spentc:,.0f}')
+                    col4.markdown(f'{balc:,.0f}')
+                    
+
+# chec = len(dists)
+
+# for ary in areas:
+#      allya = filtered_dfb[filtered_dfb['AREA']==ary] 
+#      allyf = filtered_dfa[filtered_dfa['AREA']==ary]  
+#      if chec>1:
+#           st.divider()
+#           st.markdown(f'<h4><b><u style="color: green;">DISTRICT PERFORMANCE IN {ary}</u></b></h4>', unsafe_allow_html=True)
+#          # st.write(f'**DISTRICT PERFORMANCE IN {ary}**')
+#           cola, colb, colc, cold = st.columns([2,1,1,1])
+#           cola.write('**DISTRICT**')
+#           colb.write('**PLANNED**')
+#           colc.write('**DONE**')
+#           cold.write('**BALANCE**')
+#           for district in dists:
+#                ally = allya[allya['DISTRICT']==district]
+#                allyp = allyf[allyf['DISTRICT']==district]
+#                plan = allyp['PLANNED'].sum()
+#                conducted = ally['DONE'].sum()
+#                notdone = plan - conducted
+#                cola.write(f'**{district}**')
+#                colb.write(f'**{plan}**')
+#                colc.write(f'**{conducted}**')
+#                cold.write(f'**{notdone}**')
+#      elif chec==1:
+#           st.divider() 
+#           disy = ','.join(district)
+#           st.markdown(f'<h5><b><u style="color: green;">FACILITY PERFORMANCE IN {ary} ACTIVITIES IN {disy}</u></b></h5>', unsafe_allow_html=True)
+#           #st.write(f'**FACILITY PERFORMANCE IN {ary} IN {district}**')
+#           st.divider()
+#           cola, colb, colc = st.columns([2,1,1])
+#           cola.write('**FACILITY**')
+#           colc.write('**DONE**')
+#           for fact in facys:
+#                dists = allya['DISTRICT'].unique()
+#                allyg = allya[allya['DISTRICT'].isin(dists)]
+#                ally = allyg[allyg['FACILITY']==fact]
+#                conducted = ally['DONE'].sum()
+#                cola.write(f'**{fact}**')
+#                colc.write(f'**{conducted}**')
+#      else:
+#          pass                 
                           
 
 filtered_dfc= filtered_dfb[['CLUSTER','DISTRICT','FACILITY' ,'AREA','ACTIVITY', 'DONE', 'WEEK', 'AMOUNT','ID','DATE OF SUBMISSION']]
