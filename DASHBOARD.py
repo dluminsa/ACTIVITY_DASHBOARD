@@ -244,15 +244,14 @@ for area in areas:
                          dfspentc['AMOUNT'] = pd.to_numeric(dfspentc['AMOUNT'], errors='coerce')
                          planc = dfplanc['AMOUNT'].sum()
                          spentc =  dfspentc['AMOUNT'].sum()
-                         bal = planc - spentc
+                         balc = planc - spentc
+                         if balc <0:
+                             st.warning('**ERROR**')
                     except:
                          spentc = 0
                          planc = 0
                          balc = 0
-                    if balc <0:
-                         st.warning('**ERROR**')
-                    else:
-                         pass
+                 
                     col1, col2, col3,col4 = st.columns(4)
                     col1.markdown('**DISTRICT**')
                     col2.markdown('**PLANNED**')
