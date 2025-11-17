@@ -171,12 +171,12 @@ notdonea = plana - conducteda
      
 #with st.expander('**CLICK HERE TO SEE EXPENDITURE**'):
 col1,col2,col3 = st.columns(3)#,
-     with col1:
-         st.metric(label='**BUDGETED**', value=f'{plana:,.0f}')
-     with col2:
-         st.metric(label='**SPENT**', value=f'{conducteda:,.0f}')
-     with col3:
-         st.metric(label='**BALANCE**', value=f'{notdonea:,.0f}')
+with col1:
+    st.metric(label='**BUDGETED**', value=f'{plana:,.0f}')
+with col2:
+    st.metric(label='**SPENT**', value=f'{conducteda:,.0f}')
+with col3:
+    st.metric(label='**BALANCE**', value=f'{notdonea:,.0f}')
 
 #######################################################################################################
 #PIE CHART
