@@ -213,7 +213,7 @@ fig2 = px.line(grouped, x='WEEK', y='DONE', title='WEEKLY TRENDS',
 fig2.update_layout(xaxis_title='WEEK', yaxis_title='TOTAL DONE',
                     width=800,  # Set the width of the plot
                      height=400,  # Set the height of the plot
-                     xaxis=dict(showline=True, linewidth=1, linecolor='red',tickmode='linear',tick0=25,dtick=1,),  # Show x-axis line
+                     xaxis=dict(showline=True, linewidth=1, linecolor='black',tickmode='linear',tick0=25,dtick=1,),  # Show x-axis line
                      yaxis=dict(showline=True, linewidth=1, linecolor='black'))  # Show y-axis line)
 
 st.plotly_chart(fig2, use_container_width=True)
@@ -233,7 +233,7 @@ for area in areas:
      activities = dfplana['ACTIVITY'].unique()
      
      for activity in activities:
-               st.markdown(f'<h4><b><u style="color: black;">{activity}</u></b></h4>', unsafe_allow_html=True) 
+               st.markdown(f'<h4><b><u style="color: red;">{activity}</u></b></h4>', unsafe_allow_html=True) 
                dfplanb = dfplana[dfplana['ACTIVITY']== activity].copy()
                dfspentb = dfspenta[dfspenta['ACTIVITY']== activity].copy()
                districts = dfplanb['DISTRICT'].unique()
