@@ -236,7 +236,7 @@ for area in areas:
                st.markdown(f'<h4><b><u style="color: black;">{activity}</u></b></h4>', unsafe_allow_html=True) 
                dfplanb = dfplana[dfplana['ACTIVITY']== activity].copy()
                dfspentb = dfspenta[dfspenta['ACTIVITY']== activity].copy()
-               districts = dfplana['DISTRICT'].unique()
+               districts = dfplanb['DISTRICT'].unique()
                col1, col2, col3,col4 = st.columns(4)
                col1.markdown('**DISTRICT**')
                col2.markdown('**PLANNED**')
