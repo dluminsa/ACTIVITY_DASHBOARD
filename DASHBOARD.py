@@ -197,9 +197,9 @@ fig = go.Figure(data=[go.Pie(labels=labels, values=values, textinfo='label+value
 fig.update_traces(textposition='inside', textfont_size=20)
 fig.update_layout(title_text='DONE vs NOT DONE', title_x=0.2)
 
-col1, col2,col3 = st.columns([1,4,1])
-with col2:
-     st.plotly_chart(fig, use_container_width=True)
+# col1, col2,col3 = st.columns([1,4,1])
+# with col2:
+#      st.plotly_chart(fig, use_container_width=True)
 #############################################################################################
 #LINE GRAPH
 st.divider()
@@ -214,7 +214,7 @@ fig2.update_layout(xaxis_title='WEEK', yaxis_title='TOTAL DONE',
                      xaxis=dict(showline=True, linewidth=1, linecolor='black',tickmode='linear',tick0=25,dtick=1,),  # Show x-axis line
                      yaxis=dict(showline=True, linewidth=1, linecolor='black'))  # Show y-axis line)
 
-# st.plotly_chart(fig2, use_container_width=True)
+st.plotly_chart(fig2, use_container_width=True)
 dists = filtered_dfb['DISTRICT'].unique()
 facys = filtered_dfb['FACILITY'].unique()
 areas = filtered_dfb['AREA'].unique()
