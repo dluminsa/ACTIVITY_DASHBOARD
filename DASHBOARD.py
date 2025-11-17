@@ -213,7 +213,7 @@ fig2 = px.line(grouped, x='WEEK', y='DONE', title='WEEKLY TRENDS',
 fig2.update_layout(xaxis_title='WEEK', yaxis_title='TOTAL DONE',
                     width=800,  # Set the width of the plot
                      height=400,  # Set the height of the plot
-                     xaxis=dict(showline=True, linewidth=1, linecolor='black',tickmode='linear',tick0=25,dtick=1,),  # Show x-axis line
+                     xaxis=dict(showline=True, linewidth=1, linecolor='red',tickmode='linear',tick0=25,dtick=1,),  # Show x-axis line
                      yaxis=dict(showline=True, linewidth=1, linecolor='black'))  # Show y-axis line)
 
 st.plotly_chart(fig2, use_container_width=True)
