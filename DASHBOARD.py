@@ -220,7 +220,8 @@ st.plotly_chart(fig2, use_container_width=True)
 # dists = filtered_dfb['DISTRICT'].unique()
 # facys = filtered_dfb['FACILITY'].unique()
 # areas = filtered_dfb['AREA'].unique()
-
+dfplan['AMOUNT'] = pd.to_numeric(dfplan['AMOUNT'], errors='coerce')
+dfplan = dfplan[dfplan['AMOUNT']>0].copy()
 
 areas = dfplan['AREA'].unique()
 
@@ -262,13 +263,11 @@ for area in areas:
                     # col2.markdown('**PLANNED**')
                     # col3.markdown('**SPENT**')
                     # col4.markdown('**BALANCE**')
-                    if planc >1:
-                         col1.markdown(f"**{district}**")
-                         col2.markdown(f'{planc:,.0f}')
-                         col3.markdown(f'{spentc:,.0f}')
-                         col4.markdown(f'{balc:,.0f}')
-                    else:
-                         pass
+                    col1.markdown(f"**{district}**")
+                    col2.markdown(f'{planc:,.0f}')
+                    col3.markdown(f'{spentc:,.0f}')
+                    col4.markdown(f'{balc:,.0f}')
+              
                     
 
 # chec = len(dists)
