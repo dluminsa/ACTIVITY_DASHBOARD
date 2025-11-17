@@ -226,12 +226,12 @@ areas = dfplan['AREA'].unique()
 
 for area in areas:
      col1,col2, col3 = st.columns(3)
-     col3.markdown(f'<h4><b><u style="color: green;">{area}</u></b></h4>', unsafe_allow_html=True)
+     col2.markdown(f'<h4><b><u style="color: green;">{area}</u></b></h4>', unsafe_allow_html=True)
      dfplana = dfplan[dfplan['AREA']== area].copy()
      dfspenta = dfspent[dfspent['AREA']== area].copy()
      activities = dfplana['ACTIVITY'].unique()
      
-     for activity in dactivities:
+     for activity in activities:
                st.markdown(f'<h4><b><u style="color: black;">{activity}</u></b></h4>', unsafe_allow_html=True) 
                dfplanb = dfplana[dfplana['ACTIVITY']== activity].copy()
                dfspentb = dfspenta[dfspenta['ACTIVITY']== activity].copy()
