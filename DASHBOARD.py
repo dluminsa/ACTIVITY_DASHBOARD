@@ -214,7 +214,7 @@ fig2.update_layout(xaxis_title='WEEK', yaxis_title='TOTAL DONE',
                      xaxis=dict(showline=True, linewidth=1, linecolor='black',tickmode='linear',tick0=25,dtick=1,),  # Show x-axis line
                      yaxis=dict(showline=True, linewidth=1, linecolor='black'))  # Show y-axis line)
 
-st.plotly_chart(fig2, use_container_width=True)
+# st.plotly_chart(fig2, use_container_width=True)
 dists = filtered_dfb['DISTRICT'].unique()
 facys = filtered_dfb['FACILITY'].unique()
 areas = filtered_dfb['AREA'].unique()
