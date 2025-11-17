@@ -8,6 +8,7 @@ from pathlib import Path
 from streamlit_gsheets import GSheetsConnection
 import plotly.express as px
 import plotly.graph_objects as go
+st.stop()
 
 st.set_page_config(
      page_title= 'ACTIVITY DASHBOARD'
