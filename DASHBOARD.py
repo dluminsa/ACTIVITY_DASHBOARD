@@ -262,10 +262,13 @@ for area in areas:
                     # col2.markdown('**PLANNED**')
                     # col3.markdown('**SPENT**')
                     # col4.markdown('**BALANCE**')
-                    col1.markdown(f"**{district}**")
-                    col2.markdown(f'{planc:,.0f}')
-                    col3.markdown(f'{spentc:,.0f}')
-                    col4.markdown(f'{balc:,.0f}')
+                    if planc >1:
+                         col1.markdown(f"**{district}**")
+                         col2.markdown(f'{planc:,.0f}')
+                         col3.markdown(f'{spentc:,.0f}')
+                         col4.markdown(f'{balc:,.0f}')
+                    else:
+                         pass
                     
 
 # chec = len(dists)
